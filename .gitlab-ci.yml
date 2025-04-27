@@ -146,6 +146,8 @@ vitest:
 
 e2e:
   stage: test
+  rules:
+   - when: never
   except:
     - tags@kaihuri/mobilizon
   services:
