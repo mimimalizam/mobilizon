@@ -144,37 +144,6 @@ vitest:
         - junit.xml
     expire_in: 30 days
 
-e2e:
-  stage: test
-  rules:
-   - when: never
-  except:
-    - tags@kaihuri/mobilizon
-  services:
-    - name: postgis/postgis:16-3.4
-      alias: postgres
-  variables:
-    MIX_ENV: "e2e"
-  before_script:
-    - mix deps.get
-    - mix ecto.create
-    - mix ecto.migrate
-    - mix run priv/repo/e2e.seed.exs
-    - npm install && npm run build && npx playwright install
-    - mix phx.digest
-  script:
-    - mix phx.server &
-    - npx wait-on http://localhost:4000
-    - npx playwright test --project $BROWSER
-  parallel:
-    matrix:
-      - BROWSER: ["firefox", "chromium"]
-  artifacts:
-    expire_in: 2 days
-    paths:
-      - playwright-report/
-      - test-results/
-
 pages:
   stage: deploy
   script:
