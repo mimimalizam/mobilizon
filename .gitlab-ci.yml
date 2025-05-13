@@ -355,8 +355,8 @@ package-multi-arch-release:
     - docker context create tls-environment
     - docker buildx create --use tls-environment
     # Install qemu/binfmt
-    - docker pull tonistiigi/binfmt:latest
-    - docker run --rm --privileged tonistiigi/binfmt:latest --install all
+    - docker pull public.ecr.aws/eks-distro-build-tooling/binfmt-misc:qemu-v7.0.0
+    - docker run --rm --privileged public.ecr.aws/eks-distro-build-tooling/binfmt-misc:qemu-v7.0.0 --install all
   script:
     - docker buildx build --platform linux/${ARCH} --output type=local,dest=releases --build-arg="ERL_FLAGS=+JMsingle true" --build-arg APP_ASSET=${APP_ASSET} -f docker/multiarch/Dockerfile .
     - ls -alh releases/mobilizon/
