@@ -373,7 +373,7 @@ package-multi-arch-release:
       - erl_crash.dump # if there's a memory issue
   parallel:
     matrix:
-      - ARCH: ["arm64"]
+      - ARCH: ["amd64"]
         ## Currently not used as the hexpm base images do not have support for other architectures than amd64
         # SYSTEM:
         #   [
@@ -412,7 +412,7 @@ release-upload:
       - mobilizon_*.tar.gz
   parallel:
     matrix:
-      - ARCH: ["amd64", "arm", "arm64"]
+      - ARCH: "amd64"
   allow_failure: true
 
 release-create:
