@@ -1,6 +1,6 @@
 <template>
-  <section class="container mx-auto px-2 my-3">
-    <h1 class="dark:text-white font-bold">
+  <section class="container mx-auto px-2 my-3 mb-20">
+    <h1 class="text-mbz-bluegreen dark:text-white font-bold">
       {{ config.slogan ?? t("Gather ⋅ Organize ⋅ Mobilize") }}
     </h1>
 

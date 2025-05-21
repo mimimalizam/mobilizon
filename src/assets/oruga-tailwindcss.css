@@ -57,6 +57,9 @@ body {
 .btn-outlined-primary:hover {
   @apply font-semibold py-2 px-4 bg-mbz-bluegreen dark:bg-violet-3 text-white rounded;
 }
+.btn-publish {
+  @apply text-mbz-bluegreen bg-mbz-yellow hover:bg-mbz-yellow-600 hover:text-mbz-bluegreen;
+}
 
 /* Field */
 .field {

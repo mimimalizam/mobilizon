@@ -1,6 +1,6 @@
 <template>
   <div
-    class="truncate flex gap-1"
+    class="truncate flex gap-1 text-gray dark:text-white"
     dir="auto"
     :title="
       isDescriptionDifferentFromLocality

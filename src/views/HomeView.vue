@@ -123,7 +123,7 @@
     v-if="canShowFollowedGroupEvents"
   >
     <h2
-      class="text-xl font-bold tracking-tight text-gray-900 dark:text-gray-100 mt-0"
+      class="text-xl font-bold tracking-tight text-gray dark:text-gray-100 mt-0"
     >
       {{ t("Upcoming events from your groups") }}
     </h2>
