@@ -9,7 +9,7 @@
     :isInternal="isInternal"
   >
     <div
-      class="rounded-lg"
+      class="rounded-lg p-1.5"
       :class="{ 'sm:w-full sm:max-w-[20rem]': mode === 'row' }"
     >
       <div

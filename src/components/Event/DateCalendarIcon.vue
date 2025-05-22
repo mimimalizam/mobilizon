@@ -62,13 +62,14 @@ div.datetime-container {
 
   .datetime-container-header {
     height: calc(10px * var(--small));
-    background: #f3425f;
+    background: #c6363c;
   }
   .datetime-container-header .weekday {
     font-size: calc(9px * var(--small));
     font-weight: bold;
     vertical-align: top;
     line-height: calc(9px * var(--small));
+    color: white;
   }
   .datetime-container-content {
     height: calc(30px * var(--small));

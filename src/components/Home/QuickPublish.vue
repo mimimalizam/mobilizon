@@ -1,11 +1,15 @@
 <template>
   <div class="quick-publish flex justify-end">
-    <o-button @click="$router.push({ name: ActorRouteName.MY_GROUPS })">
+    <o-button
+      class="btn-publish"
+      @click="$router.push({ name: ActorRouteName.MY_GROUPS })"
+    >
       {{ t("Publish") }}
     </o-button>
     <o-dropdown position="bottom-right">
       <template #trigger="{ active }">
         <o-button
+          class="btn-publish"
           :title="t('Choose publishing')"
           :icon-right="active ? 'menu-up' : 'menu-down'"
         >
