@@ -214,7 +214,7 @@ pages:
 build-docker-main:
   <<: *docker
   before_script:
-    - echo "$CI_REGISTRY_PASSWORD" | docker login $CI_REGISTRY --username $CI_REGISTRY_USER --password-stdin
+    - echo "$DOCKER_REGISTRY_PASSWORD" | docker login --username $DOCKER_REGISTRY_USER --password-stdin
   script:
     - docker buildx build --platform linux/amd64 -t it-blokada/mobilizon:main -f docker/production/Dockerfile .
 
