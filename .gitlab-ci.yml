@@ -221,6 +221,8 @@ build-docker-main:
 build-docker-tag:
   <<: *docker
   timeout: 3 hours
+  before_script:
+    - echo "$DOCKER_REGISTRY_PASSWORD" | docker login --username $DOCKER_REGISTRY_USER --password-stdin
   script:
     - >
       docker buildx build
@@ -241,6 +243,8 @@ build-docker-tag:
 docker-manifest-push:
   <<: *docker
   needs: ["build-docker-tag"]
+  before_script:
+    - echo "$CI_REGISTRY_PASSWORD" | docker login $CI_REGISTRY --username $CI_REGISTRY_USER --password-stdin
   script:
     - >
       docker manifest create it-blokada/mobilizon:${CI_COMMIT_TAG}
@@ -256,6 +260,8 @@ docker-manifest-push:
 docker-latest:
   <<: *docker
   needs: ["docker-manifest-push"]
+  before_script:
+    - echo "$CI_REGISTRY_PASSWORD" | docker login $CI_REGISTRY --username $CI_REGISTRY_USER --password-stdin
   script:
     - echo docker manifest create it-blokada/mobilizon:latest $(docker manifest inspect it-blokada/mobilizon:$CI_COMMIT_TAG | jq '.manifests[] | .digest' | xargs -I {} echo it-blokada/mobilizon@{})
     - docker manifest create it-blokada/mobilizon:latest $(docker manifest inspect it-blokada/mobilizon:$CI_COMMIT_TAG | jq -r '.manifests[] | .digest' | xargs -I {} echo it-blokada/mobilizon@{})
