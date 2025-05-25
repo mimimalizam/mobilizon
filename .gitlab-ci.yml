@@ -222,7 +222,7 @@ build-docker-tag:
   <<: *docker
   timeout: 3 hours
   before_script:
-    - echo "$DOCKER_REGISTRY_PASSWORD" | docker login --username $DOCKER_REGISTRY_USER --password-stdin
+    - echo "$CI_REGISTRY_PASSWORD" | docker login $CI_REGISTRY --username $CI_REGISTRY_USER --password-stdin
   script:
     - >
       docker buildx build
