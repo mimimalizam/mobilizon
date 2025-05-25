@@ -200,8 +200,8 @@ pages:
     - docker context create tls-environment
     - docker buildx create --use tls-environment
     # Install qemu/binfmt
-    - docker pull tonistiigi/binfmt:latest
-    - docker run --rm --privileged tonistiigi/binfmt:latest --install all
+    - docker pull public.ecr.aws/vend/tonistiigi/binfmt:latest
+    - docker run --rm --privileged public.ecr.aws/vend/tonistiigi/binfmt:latest --install all
     # Install jq
     - apk --no-cache add jq
     # Login to DockerHub
@@ -213,20 +213,13 @@ pages:
 
 build-docker-main:
   <<: *docker
-  rules:
-    - if: '$CI_PROJECT_NAMESPACE != "IT-BLOKADA"'
-      when: never
-    - if: '$CI_PIPELINE_SOURCE == "schedule" || $CI_PIPELINE_TRIGGERED == "true"'
+  before_script:
+    - echo "$DOCKER_REGISTRY_PASSWORD" | docker login --username $DOCKER_REGISTRY_USER --password-stdin
   script:
-    - docker buildx build --platform linux/amd64 -t IT-BLOKADA/mobilizon:main -f docker/production/Dockerfile .
+    - docker buildx build --platform linux/amd64 -t it-blokada/mobilizon:main -f docker/production/Dockerfile .
 
 build-docker-tag:
   <<: *docker
-  rules: &release-tag-rules
-    - if: '$CI_PROJECT_NAMESPACE != "IT-BLOKADA"'
-      when: never
-    #- if: $CI_COMMIT_TAG != null
-    #  when: on_success
   timeout: 3 hours
   script:
     - >
@@ -235,7 +228,7 @@ build-docker-tag:
       --platform linux/${ARCH}
       --provenance=false
       --build-arg="${ERL_FLAGS}"
-      -t IT-BLOKADA/mobilizon:${CI_COMMIT_TAG}-${ARCH}
+      -t it-blokada/mobilizon:${CI_COMMIT_TAG}-${ARCH}
       -f docker/production/Dockerfile .
   parallel:
     matrix:
@@ -248,17 +241,12 @@ build-docker-tag:
 docker-manifest-push:
   <<: *docker
   needs: ["build-docker-tag"]
-  rules: &release-tag-rules
-    - if: '$CI_PROJECT_NAMESPACE != "IT-BLOKADA"'
-      when: never
-    - if: $CI_COMMIT_TAG != null
-      when: on_success
   script:
     - >
-      docker manifest create IT-BLOKADA/mobilizon:${CI_COMMIT_TAG}
-      --amend IT-BLOKADA/mobilizon:${CI_COMMIT_TAG}-amd64
-      --amend IT-BLOKADA/mobilizon:${CI_COMMIT_TAG}-arm64
-    - docker manifest push --purge IT-BLOKADA/mobilizon:${CI_COMMIT_TAG}
+      docker manifest create it-blokada/mobilizon:${CI_COMMIT_TAG}
+      --amend it-blokada/mobilizon:${CI_COMMIT_TAG}-amd64
+      --amend it-blokada/mobilizon:${CI_COMMIT_TAG}-arm64
+    - docker manifest push --purge it-blokada/mobilizon:${CI_COMMIT_TAG}
 
 ###
 # Simply creating an alias to the tag doesn't work:
@@ -268,15 +256,10 @@ docker-manifest-push:
 docker-latest:
   <<: *docker
   needs: ["docker-manifest-push"]
-  rules: &release-tag-rules
-    - if: '$CI_PROJECT_NAMESPACE != "IT-BLOKADA"'
-      when: never
-    - if: $CI_COMMIT_TAG != null && $CI_COMMIT_TAG !~ /alpha|beta|rc/
-      when: on_success
   script:
-    - echo docker manifest create IT-BLOKADA/mobilizon:latest $(docker manifest inspect IT-BLOKADA/mobilizon:$CI_COMMIT_TAG | jq '.manifests[] | .digest' | xargs -I {} echo IT-BLOKADA/mobilizon@{})
-    - docker manifest create IT-BLOKADA/mobilizon:latest $(docker manifest inspect IT-BLOKADA/mobilizon:$CI_COMMIT_TAG | jq -r '.manifests[] | .digest' | xargs -I {} echo IT-BLOKADA/mobilizon@{})
-    - docker manifest push --purge IT-BLOKADA/mobilizon:latest
+    - echo docker manifest create it-blokada/mobilizon:latest $(docker manifest inspect it-blokada/mobilizon:$CI_COMMIT_TAG | jq '.manifests[] | .digest' | xargs -I {} echo it-blokada/mobilizon@{})
+    - docker manifest create it-blokada/mobilizon:latest $(docker manifest inspect it-blokada/mobilizon:$CI_COMMIT_TAG | jq -r '.manifests[] | .digest' | xargs -I {} echo it-blokada/mobilizon@{})
+    - docker manifest push --purge it-blokada/mobilizon:latest
 
 # Packaging app for amd64
 package-app:
@@ -301,7 +284,7 @@ package-app:
     - tar czf ${APP_ASSET} -C release mobilizon
     - du -sh ${APP_ASSET}
   only:
-    - tags@IT-BLOKADA/mobilizon
+    - tags@it-blokada/mobilizon
   artifacts:
     expire_in: 2 days
     paths:
@@ -324,7 +307,7 @@ package-app-dev:
   variables: *release-variables
   script: *release-script
   except:
-    - tags@IT-BLOKADA/mobilizon
+    - tags@it-blokada/mobilizon
   artifacts:
     expire_in: 2 days
     paths:
