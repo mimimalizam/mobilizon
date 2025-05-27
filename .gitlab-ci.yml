@@ -219,35 +219,7 @@ build-docker-main:
     - docker buildx build --platform linux/amd64 -t $CI_REGISTRY_IMAGE:${CI_COMMIT_REF_NAME} -f docker/production/Dockerfile .
     - docker push "$CI_REGISTRY_IMAGE:$CI_COMMIT_REF_NAME"
     - docker push "$CI_REGISTRY_IMAGE:$CI_COMMIT_REF_NAME-latest"
-
-
-# Create manifest and push
-docker-manifest-push:
-  <<: *docker
-  needs: ["build-docker-main"]
-  before_script:
-    - echo "$CI_REGISTRY_PASSWORD" | docker login $CI_REGISTRY --username $CI_REGISTRY_USER --password-stdin
-  script:
-    - >
-      docker manifest create it-blokada/mobilizon:${CI_COMMIT_REF_NAME}
-      --amend it-blokada/mobilizon:${CI_COMMIT_REF_NAME}-amd64
-    - docker manifest push --purge it-blokada/mobilizon:${CI_COMMIT_NAME}
-
-###
-# Simply creating an alias to the tag doesn't work:
-# « xxx is a manifest list »
-# https://joonas.fi/2021/02/docker-multi-arch-image-tooling-buildx/
-###
-docker-latest:
-  <<: *docker
-  needs: ["docker-manifest-push"]
-  before_script:
-    - echo "$CI_REGISTRY_PASSWORD" | docker login $CI_REGISTRY --username $CI_REGISTRY_USER --password-stdin
-  script:
-    - echo docker manifest create it-blokada/mobilizon:latest $(docker manifest inspect it-blokada/mobilizon:$CI_COMMIT_TAG | jq '.manifests[] | .digest' | xargs -I {} echo it-blokada/mobilizon@{})
-    - docker manifest create it-blokada/mobilizon:latest $(docker manifest inspect it-blokada/mobilizon:$CI_COMMIT_TAG | jq -r '.manifests[] | .digest' | xargs -I {} echo it-blokada/mobilizon@{})
-    - docker manifest push --purge it-blokada/mobilizon:latest
-
+    
 # Packaging app for amd64
 package-app:
   image: mobilizon/buildpack:1.16.1-erlang-26.2.2-${SYSTEM}
