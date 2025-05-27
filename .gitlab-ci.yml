@@ -231,8 +231,8 @@ docker-manifest-push:
   script:
     - >
       docker manifest create it-blokada/mobilizon:${CI_COMMIT_REF_NAME}
-      --amend it-blokada/mobilizon:${CI_COMMIT_TAG}-amd64
-      - docker manifest push --purge it-blokada/mobilizon:${CI_COMMIT_NAME}
+      --amend it-blokada/mobilizon:${CI_COMMIT_REF_NAME}-amd64
+    - docker manifest push --purge it-blokada/mobilizon:${CI_COMMIT_NAME}
 
 ###
 # Simply creating an alias to the tag doesn't work:
