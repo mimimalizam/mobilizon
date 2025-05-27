@@ -225,13 +225,12 @@ build-docker-tag:
     - echo "$DOCKER_REGISTRY_PASSWORD" | docker login --username $DOCKER_REGISTRY_USER --password-stdin
   script:
     - >
-      IMAGE_TAG=${CI_COMMIT_TAG:-$CI_COMMIT_REF_SLUG}
       docker buildx build
       --push
       --platform linux/${ARCH}
       --provenance=false
       --build-arg="${ERL_FLAGS}"
-      -t $CI_REGISTRY_IMAGE:${IMAGE_TAG}-${ARCH}
+      -t $CI_REGISTRY_IMAGE:${CI_COMMIT_REF_NAME}-${ARCH}
       -f docker/production/Dockerfile .
   parallel:
     matrix:
