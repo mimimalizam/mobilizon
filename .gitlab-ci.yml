@@ -217,7 +217,6 @@ build-docker-main:
     - echo "$DOCKER_REGISTRY_PASSWORD" | docker login --username $DOCKER_REGISTRY_USER --password-stdin
   script:
     - docker buildx build --platform linux/amd64 -t $CI_REGISTRY_IMAGE:${CI_COMMIT_REF_NAME} -f docker/production/Dockerfile .
-    - echo "$CI_REGISTRY_PASSWORD" | docker login $CI_REGISTRY --username $CI_REGISTRY_USER --password-stdin
     - docker push "$CI_REGISTRY_IMAGE:$CI_COMMIT_REF_NAME"
     - docker push "$CI_REGISTRY_IMAGE:$CI_COMMIT_REF_NAME-latest"
 
