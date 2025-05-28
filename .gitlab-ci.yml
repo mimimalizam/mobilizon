@@ -48,7 +48,7 @@ install:
     - mix deps.get
     - mix compile
   tags:
-    - milana
+    - nikola
 
 lint-elixir:
   stage: check
@@ -68,7 +68,7 @@ lint-elixir:
     reports:
       codequality: codeclimate.json
   tags:
-    - milana
+    - nikola
 
 lint-front:
   image: node:20
@@ -82,7 +82,7 @@ lint-front:
 #    - npx prettier -c . || export EXITVALUE=1
 #    - exit $EXITVALUE
   tags:
-    - milana
+    - nikola
 
 build-frontend:
   stage: build-js
@@ -100,7 +100,7 @@ build-frontend:
   needs:
     - lint-front
   tags:
-    - milana
+    - nikola
 
 deps:
   stage: check
@@ -115,7 +115,7 @@ deps:
   needs:
     - install
   tags:
-    - milana
+    - nikola
 
 exunit:
   stage: test
@@ -139,7 +139,7 @@ exunit:
         - test-junit-report.xml
     expire_in: 30 days
   tags:
-    - milana
+    - nikola
 
 vitest:
   stage: test
@@ -158,7 +158,7 @@ vitest:
         - junit.xml
     expire_in: 30 days
   tags:
-    - milana
+    - nikola
 
 pages:
   stage: deploy
@@ -177,7 +177,7 @@ pages:
     paths:
       - public
   tags:
-    - milana
+    - nikola
 
 .docker: &docker
   stage: build
@@ -211,7 +211,7 @@ pages:
     - echo "{\"auths\":{\"$CI_REGISTRY\":{\"auth\":\"$CI_REGISTRY_AUTH\",\"email\":\"$CI_REGISTRY_EMAIL\"}}}" > ~/.docker/config.json
   tags:
     - "privileged"
-    - milana
+    - nikola
 
 build-docker-main:
   <<: *docker
