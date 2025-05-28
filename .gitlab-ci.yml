@@ -218,7 +218,6 @@ build-docker-main:
   script:
     - docker buildx build --platform linux/amd64 -t $CI_REGISTRY_IMAGE:${CI_COMMIT_REF_NAME} -f docker/production/Dockerfile .
     - docker tag $CI_REGISTRY_IMAGE:$CI_COMMIT_REF_NAME $CI_REGISTRY_IMAGE:$CI_COMMIT_REF_NAME-latest
-    - echo $CI_REGISTRY_AUTH | docker login $CI_REGISTRY --username $CI_REGISTRY_EMAIL --password-stdin
     - docker push $CI_REGISTRY_IMAGE:$CI_COMMIT_REF_NAME
     - docker push $CI_REGISTRY_IMAGE:$CI_COMMIT_REF_NAME-latest
 
