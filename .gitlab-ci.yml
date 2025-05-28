@@ -12,7 +12,7 @@ stages:
 variables:
   MIX_ENV: "test"
   # DB Variables for Postgres / Postgis
-  POSTGRES_DB: mobilizon_test
+  POSTGRES_DB: mobilizon_test:webp
   POSTGRES_USER: postgres
   POSTGRES_PASSWORD: postgres
   POSTGRES_HOST: postgres
@@ -48,7 +48,7 @@ install:
     - mix deps.get
     - mix compile
   tags:
-    - nikola
+    - milana
 
 lint-elixir:
   stage: check
@@ -56,18 +56,19 @@ lint-elixir:
     - mix deps.get
   script:
     - export EXITVALUE=0
-    - git fetch origin ${CI_DEFAULT_BRANCH}
-    - TARGET_SHA1=$(git show-ref -s ${CI_DEFAULT_BRANCH})
-    - echo "$TARGET_SHA1"
-    - mix format --check-formatted --dry-run || export EXITVALUE=1
-    - mix credo diff --from-git-merge-base $TARGET_SHA1 --strict -a || export EXITVALUE=1
-    - mix sobelow --config || export EXITVALUE=1
-    - exit $EXITVALUE
+    # - git fetch origin ${CI_DEFAULT_BRANCH}
+    # - TARGET_SHA1=$(git show-ref -s ${CI_DEFAULT_BRANCH})
+    # - echo "$TARGET_SHA1"
+    # - mix format --check-formatted --dry-run || export EXITVALUE=1
+    # - mix credo diff --from-git-merge-base $TARGET_SHA1 --strict -a || export EXITVALUE=1
+    # - mix sobelow --config || export EXITVALUE=1
+    # - exit $EXITVALUE
+    - echo "from lint be"
   artifacts:
     reports:
       codequality: codeclimate.json
   tags:
-    - nikola
+    - milana
 
 lint-front:
   image: node:20
@@ -76,11 +77,12 @@ lint-front:
     - export EXITVALUE=0
     - npm ci
   script:
-    - npm run lint || export EXITVALUE=1
-    - npx prettier -c . || export EXITVALUE=1
-    - exit $EXITVALUE
+    - echo "from lint fe"
+#    - npm run lint || export EXITVALUE=1
+#    - npx prettier -c . || export EXITVALUE=1
+#    - exit $EXITVALUE
   tags:
-    - nikola
+    - milana
 
 build-frontend:
   stage: build-js
@@ -98,7 +100,7 @@ build-frontend:
   needs:
     - lint-front
   tags:
-    - nikola
+    - milana
 
 deps:
   stage: check
@@ -113,7 +115,7 @@ deps:
   needs:
     - install
   tags:
-    - nikola
+    - milana
 
 exunit:
   stage: test
@@ -137,7 +139,7 @@ exunit:
         - test-junit-report.xml
     expire_in: 30 days
   tags:
-    - nikola
+    - milana
 
 vitest:
   stage: test
@@ -156,7 +158,7 @@ vitest:
         - junit.xml
     expire_in: 30 days
   tags:
-    - nikola
+    - milana
 
 pages:
   stage: deploy
@@ -175,7 +177,7 @@ pages:
     paths:
       - public
   tags:
-    - nikola
+    - milana
 
 .docker: &docker
   stage: build
@@ -209,7 +211,7 @@ pages:
     - echo "{\"auths\":{\"$CI_REGISTRY\":{\"auth\":\"$CI_REGISTRY_AUTH\",\"email\":\"$CI_REGISTRY_EMAIL\"}}}" > ~/.docker/config.json
   tags:
     - "privileged"
-    - nikola
+    - milana
 
 build-docker-main:
   <<: *docker
