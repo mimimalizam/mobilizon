@@ -74,6 +74,14 @@ ENV MOBILIZON_DOCKER=true
 
 COPY --from=builder --chown=nobody:nobody _build/prod/rel/mobilizon ./
 RUN cp /releases/*/runtime.exs /etc/mobilizon/config.exs
-COPY docker/production/docker-entrypoint.sh ./
+# Set proper permissions for all binaries and scripts
+RUN chmod +x /releases/mobilizon/bin/* && \
+    chmod +x /releases/mobilizon/releases/*/bin/* && \
+    find /releases -type f -executable -exec chmod +x {} \; && \
+    ln -s /releases/mobilizon/bin/mobilizon_ctl /bin/mobilizon_ctl && \
+    chmod +x /bin/mobilizon_ctl
+
+# Copy entrypoint with permissions
+COPY --chmod=755 docker/production/docker-entrypoint.sh ./docker-entrypoint.sh
 
 ENTRYPOINT ["./docker-entrypoint.sh"]

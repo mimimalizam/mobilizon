@@ -216,7 +216,6 @@ build-docker-main:
   before_script:
     - echo "$DOCKER_REGISTRY_PASSWORD" | docker login --username $DOCKER_REGISTRY_USER --password-stdin
     - echo "$CI_REGISTRY_PASSWORD" | docker login $CI_REGISTRY -u $CI_REGISTRY_USER --password-stdin
-    - chmod +x docker/production/docker-entrypoint.sh
   script:
     - docker buildx build --platform linux/amd64 -t $CI_REGISTRY_IMAGE:${CI_COMMIT_REF_NAME} -f docker/production/Dockerfile .
     - docker tag $CI_REGISTRY_IMAGE:$CI_COMMIT_REF_NAME $CI_REGISTRY_IMAGE:$CI_COMMIT_REF_NAME-latest
