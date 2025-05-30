@@ -56,8 +56,8 @@ lint-elixir:
     - mix deps.get
   script:
     - export EXITVALUE=0
-    - git fetch origin ${CI_DEFAULT_BRANCH}
-    - TARGET_SHA1=$(git show-ref -s ${CI_DEFAULT_BRANCH})
+    - git fetch origin development
+    - TARGET_SHA1=$(git show-ref -s development)
     - echo "$TARGET_SHA1"
     - mix format --check-formatted --dry-run || export EXITVALUE=1
     - mix credo diff --from-git-merge-base $TARGET_SHA1 --strict -a || export EXITVALUE=1
@@ -215,7 +215,7 @@ build-docker-main:
   <<: *docker
   before_script:
     - echo "$DOCKER_REGISTRY_PASSWORD" | docker login --username $DOCKER_REGISTRY_USER --password-stdin
-    - echo "$CI_NIKOLA_TOKEN" | docker login --username $CI_REGISTRY_USER --password-stdin "$CI_REGISTRY"
+    - echo "$CI_REGISTRY_PASSWORD" | docker login $CI_REGISTRY -u $CI_REGISTRY_USER --password-stdin
   script:
     - docker buildx build --platform linux/amd64 -t $CI_REGISTRY_IMAGE:${CI_COMMIT_REF_NAME} -f docker/production/Dockerfile .
     - docker tag $CI_REGISTRY_IMAGE:$CI_COMMIT_REF_NAME $CI_REGISTRY_IMAGE:$CI_COMMIT_REF_NAME-latest
