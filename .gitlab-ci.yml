@@ -169,7 +169,7 @@ pages:
   #     #- npm run styleguide:build
   #     #- mv styleguide public/frontend
   rules:
-    - if: '$CI_COMMIT_BRANCH == "main"'
+    - if: '$CI_COMMIT_BRANCH == "development"'
   artifacts:
     expire_in: 1 hour
     paths:
