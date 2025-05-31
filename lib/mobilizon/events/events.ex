@@ -32,6 +32,7 @@ defmodule Mobilizon.Events do
   }
 
   alias Mobilizon.Federation.ActivityPub.Relay
+  alias Mobilizon.SerbianTransliteration
   alias Mobilizon.Service.Export.Cachable
   alias Mobilizon.Service.Workers.BuildSearch
   alias Mobilizon.Service.Workers.EventDelayedNotificationWorker
@@ -1341,21 +1342,22 @@ defmodule Mobilizon.Events do
     )
   end
 
-  defmacro matching_event_ids_and_ranks(search_string) do
+  defmacro matching_event_ids_and_ranks(search_string, or_part, alternative) do
     quote do
       fragment(
         """
         SELECT event_search.id AS id,
         ts_rank(
-          event_search.document, plainto_tsquery(unaccent(?))
+          event_search.document, websearch_to_tsquery(unaccent(?))
         ) AS rank
         FROM event_search
-        WHERE event_search.document @@ plainto_tsquery(unaccent(?))
-        OR event_search.title ILIKE ?
+        WHERE event_search.document @@ websearch_to_tsquery(unaccent(?))
+        OR event_search.title ILIKE ? OR event_search.title ILIKE ?
         """,
-        ^unquote(search_string),
-        ^unquote(search_string),
-        ^"%#{unquote(search_string)}%"
+        ^unquote(or_part),
+        ^unquote(or_part),
+        ^"%#{unquote(search_string)}%",
+        ^"%#{unquote(alternative)}%"
       )
     end
   end
@@ -1363,7 +1365,11 @@ defmodule Mobilizon.Events do
   defp events_for_search_query(""), do: Event
 
   defp events_for_search_query(search_string) do
-    join(Event, :inner, [e], id_and_rank in matching_event_ids_and_ranks(search_string),
+    cyr = SerbianTransliteration.to_cyr(search_string)
+    lat = SerbianTransliteration.to_lat(search_string)
+    or_part = "#{lat} or #{cyr}"
+
+    join(Event, :inner, [e], id_and_rank in matching_event_ids_and_ranks(lat, or_part, cyr),
       on: id_and_rank.id == e.id
     )
   end
