@@ -61,7 +61,7 @@ defmodule Mobilizon.SerbianTransliteration do
       "г" => "g",
       "д" => "d",
       "ђ" => "đ",
-      "е" => "е",
+      "е" => "e",
       "ж" => "ž",
       "з" => "z",
       "и" => "i",
