@@ -47,8 +47,6 @@ install:
     - npm ci
     - mix deps.get
     - mix compile
-  tags:
-    - nikola
 
 lint-elixir:
   stage: check
@@ -56,8 +54,8 @@ lint-elixir:
     - mix deps.get
   script:
     - export EXITVALUE=0
-    - git fetch origin development
-    - TARGET_SHA1=$(git show-ref -s development)
+    - git fetch origin ${CI_DEFAULT_BRANCH}
+    - TARGET_SHA1=$(git show-ref -s ${CI_DEFAULT_BRANCH})
     - echo "$TARGET_SHA1"
     - mix format --check-formatted --dry-run || export EXITVALUE=1
     - mix credo diff --from-git-merge-base $TARGET_SHA1 --strict -a || export EXITVALUE=1
@@ -66,8 +64,6 @@ lint-elixir:
   artifacts:
     reports:
       codequality: codeclimate.json
-  tags:
-    - nikola
 
 lint-front:
   image: node:20
@@ -79,8 +75,6 @@ lint-front:
     - npm run lint || export EXITVALUE=1
     - npx prettier -c . || export EXITVALUE=1
     - exit $EXITVALUE
-  tags:
-    - nikola
 
 build-frontend:
   stage: build-js
@@ -97,8 +91,6 @@ build-frontend:
       - priv/static
   needs:
     - lint-front
-  tags:
-    - nikola
 
 deps:
   stage: check
@@ -112,8 +104,6 @@ deps:
   allow_failure: true
   needs:
     - install
-  tags:
-    - nikola
 
 exunit:
   stage: test
@@ -136,8 +126,6 @@ exunit:
       junit:
         - test-junit-report.xml
     expire_in: 30 days
-  tags:
-    - nikola
 
 vitest:
   stage: test
@@ -155,8 +143,35 @@ vitest:
       junit:
         - junit.xml
     expire_in: 30 days
-  tags:
-    - nikola
+
+e2e:
+  stage: test
+  except:
+    - tags@kaihuri/mobilizon
+  services:
+    - name: postgis/postgis:16-3.4
+      alias: postgres
+  variables:
+    MIX_ENV: "e2e"
+  before_script:
+    - mix deps.get
+    - mix ecto.create
+    - mix ecto.migrate
+    - mix run priv/repo/e2e.seed.exs
+    - npm install && npm run build && npx playwright install
+    - mix phx.digest
+  script:
+    - mix phx.server &
+    - npx wait-on http://localhost:4000
+    - npx playwright test --project $BROWSER
+  parallel:
+    matrix:
+      - BROWSER: ["firefox", "chromium"]
+  artifacts:
+    expire_in: 2 days
+    paths:
+      - playwright-report/
+      - test-results/
 
 pages:
   stage: deploy
@@ -169,13 +184,11 @@ pages:
   #     #- npm run styleguide:build
   #     #- mv styleguide public/frontend
   rules:
-    - if: '$CI_COMMIT_BRANCH == "development"'
+    - if: '$CI_COMMIT_BRANCH == "main"'
   artifacts:
     expire_in: 1 hour
     paths:
       - public
-  tags:
-    - nikola
 
 .docker: &docker
   stage: build
@@ -200,8 +213,8 @@ pages:
     - docker context create tls-environment
     - docker buildx create --use tls-environment
     # Install qemu/binfmt
-    - docker pull public.ecr.aws/vend/tonistiigi/binfmt:latest
-    - docker run --rm --privileged public.ecr.aws/vend/tonistiigi/binfmt:latest --install all
+    - docker pull tonistiigi/binfmt:latest
+    - docker run --rm --privileged tonistiigi/binfmt:latest --install all
     # Install jq
     - apk --no-cache add jq
     # Login to DockerHub
@@ -209,18 +222,73 @@ pages:
     - echo "{\"auths\":{\"$CI_REGISTRY\":{\"auth\":\"$CI_REGISTRY_AUTH\",\"email\":\"$CI_REGISTRY_EMAIL\"}}}" > ~/.docker/config.json
   tags:
     - "privileged"
-    - nikola
 
 build-docker-main:
   <<: *docker
-  before_script:
-    - echo "$DOCKER_REGISTRY_PASSWORD" | docker login --username $DOCKER_REGISTRY_USER --password-stdin
-    - echo "$CI_REGISTRY_PASSWORD" | docker login $CI_REGISTRY -u $CI_REGISTRY_USER --password-stdin
+  rules:
+    - if: '$CI_PROJECT_NAMESPACE != "kaihuri"'
+      when: never
+    - if: '$CI_PIPELINE_SOURCE == "schedule" || $CI_PIPELINE_TRIGGERED == "true"'
   script:
-    - docker buildx build --platform linux/amd64 -t $CI_REGISTRY_IMAGE:${CI_COMMIT_REF_NAME} -f docker/production/Dockerfile .
-    - docker tag $CI_REGISTRY_IMAGE:$CI_COMMIT_REF_NAME $CI_REGISTRY_IMAGE:$CI_COMMIT_REF_NAME-latest
-    - docker push $CI_REGISTRY_IMAGE:$CI_COMMIT_REF_NAME
-    - docker push $CI_REGISTRY_IMAGE:$CI_COMMIT_REF_NAME-latest
+    - docker buildx build --platform linux/amd64 -t kaihuri/mobilizon:main -f docker/production/Dockerfile .
+
+build-docker-tag:
+  <<: *docker
+  rules: &release-tag-rules
+    - if: '$CI_PROJECT_NAMESPACE != "kaihuri"'
+      when: never
+    - if: $CI_COMMIT_TAG != null
+      when: on_success
+  timeout: 3 hours
+  script:
+    - >
+      docker buildx build
+      --push
+      --platform linux/${ARCH}
+      --provenance=false
+      --build-arg="${ERL_FLAGS}"
+      -t kaihuri/mobilizon:${CI_COMMIT_TAG}-${ARCH}
+      -f docker/production/Dockerfile .
+  parallel:
+    matrix:
+      - ARCH: ["amd64"]
+        ERL_FLAGS: ["ERL_FLAGS="]
+      - ARCH: ["arm64"]
+        ERL_FLAGS: ["ERL_FLAGS=+JMsingle true"]
+
+# Create manifest and push
+docker-manifest-push:
+  <<: *docker
+  needs: ["build-docker-tag"]
+  rules: &release-tag-rules
+    - if: '$CI_PROJECT_NAMESPACE != "kaihuri"'
+      when: never
+    - if: $CI_COMMIT_TAG != null
+      when: on_success
+  script:
+    - >
+      docker manifest create kaihuri/mobilizon:${CI_COMMIT_TAG}
+      --amend kaihuri/mobilizon:${CI_COMMIT_TAG}-amd64
+      --amend kaihuri/mobilizon:${CI_COMMIT_TAG}-arm64
+    - docker manifest push --purge kaihuri/mobilizon:${CI_COMMIT_TAG}
+
+###
+# Simply creating an alias to the tag doesn't work:
+# « xxx is a manifest list »
+# https://joonas.fi/2021/02/docker-multi-arch-image-tooling-buildx/
+###
+docker-latest:
+  <<: *docker
+  needs: ["docker-manifest-push"]
+  rules: &release-tag-rules
+    - if: '$CI_PROJECT_NAMESPACE != "kaihuri"'
+      when: never
+    - if: $CI_COMMIT_TAG != null && $CI_COMMIT_TAG !~ /alpha|beta|rc/
+      when: on_success
+  script:
+    - echo docker manifest create kaihuri/mobilizon:latest $(docker manifest inspect kaihuri/mobilizon:$CI_COMMIT_TAG | jq '.manifests[] | .digest' | xargs -I {} echo kaihuri/mobilizon@{})
+    - docker manifest create kaihuri/mobilizon:latest $(docker manifest inspect kaihuri/mobilizon:$CI_COMMIT_TAG | jq -r '.manifests[] | .digest' | xargs -I {} echo kaihuri/mobilizon@{})
+    - docker manifest push --purge kaihuri/mobilizon:latest
 
 # Packaging app for amd64
 package-app:
@@ -245,7 +313,7 @@ package-app:
     - tar czf ${APP_ASSET} -C release mobilizon
     - du -sh ${APP_ASSET}
   only:
-    - tags@it-blokada/mobilizon
+    - tags@kaihuri/mobilizon
   artifacts:
     expire_in: 2 days
     paths:
@@ -268,13 +336,11 @@ package-app-dev:
   variables: *release-variables
   script: *release-script
   except:
-    - tags@it-blokada/mobilizon
+    - tags@kaihuri/mobilizon
   artifacts:
     expire_in: 2 days
     paths:
       - ${APP_ASSET}
-  tags:
-    - nikola
 
 # Packaging app for multi-arch
 package-multi-arch-release:
@@ -292,8 +358,6 @@ package-multi-arch-release:
     - docker:24-dind
   cache: {}
   before_script:
-    # Docker login
-    - echo "$DOCKER_REGISTRY_PASSWORD" | docker login -u $DOCKER_REGISTRY_USER --password-stdin
     # Install buildx
     - wget https://github.com/docker/buildx/releases/download/v0.11.2/buildx-v0.11.2.linux-amd64
     - mkdir -p ~/.docker/cli-plugins/
@@ -303,8 +367,8 @@ package-multi-arch-release:
     - docker context create tls-environment
     - docker buildx create --use tls-environment
     # Install qemu/binfmt
-    - docker pull public.ecr.aws/eks-distro-build-tooling/binfmt-misc:qemu-v7.0.0
-    - docker run --rm --privileged public.ecr.aws/eks-distro-build-tooling/binfmt-misc:qemu-v7.0.0 --install all
+    - docker pull tonistiigi/binfmt:latest
+    - docker run --rm --privileged tonistiigi/binfmt:latest --install all
   script:
     - docker buildx build --platform linux/${ARCH} --output type=local,dest=releases --build-arg="ERL_FLAGS=+JMsingle true" --build-arg APP_ASSET=${APP_ASSET} -f docker/multiarch/Dockerfile .
     - ls -alh releases/mobilizon/
@@ -319,7 +383,7 @@ package-multi-arch-release:
       - erl_crash.dump # if there's a memory issue
   parallel:
     matrix:
-      - ARCH: ["amd64"]
+      - ARCH: ["arm64"]
         ## Currently not used as the hexpm base images do not have support for other architectures than amd64
         # SYSTEM:
         #   [
@@ -345,7 +409,7 @@ release-upload:
   variables:
     APP_ASSET: "${CI_PROJECT_NAME}_${CI_COMMIT_REF_NAME}_${ARCH}.tar.gz"
   rules:
-    - if: '$CI_PROJECT_NAMESPACE != "IT-BLOKADA"'
+    - if: '$CI_PROJECT_NAMESPACE != "kaihuri"'
       when: never
   script:
     - eval `ssh-agent -s`
@@ -358,14 +422,14 @@ release-upload:
       - mobilizon_*.tar.gz
   parallel:
     matrix:
-      - ARCH: "amd64"
+      - ARCH: ["amd64", "arm", "arm64"]
   allow_failure: true
 
 release-create:
   stage: deploy
   image: registry.gitlab.com/gitlab-org/release-cli:latest
   rules:
-    - if: '$CI_PROJECT_NAMESPACE != "IT-BLOKADA"'
+    - if: '$CI_PROJECT_NAMESPACE != "kaihuri"'
       when: never
   variables:
     APP_ASSET_AMD64: "${CI_PROJECT_NAME}_${CI_COMMIT_REF_NAME}_amd64.tar.gz"

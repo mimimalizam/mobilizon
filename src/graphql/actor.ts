@@ -4,7 +4,7 @@ export const ACTOR_FRAGMENT = gql`
   fragment ActorFragment on Actor {
     id
     avatar {
-      id
+      uuid
       url
     }
     type
@@ -18,20 +18,40 @@ export const ACTOR_FRAGMENT = gql`
 
 // Do not request mediaSize here because mediaSize can only be accessed
 // by user_himself/moderator/administrator (can_get_actor_size? in media.ex)
+// same goes for feed tokens, they are private
 // - FETCH_PERSON is used by <NewConversation> and can be used by simple users here
-// - FETCH_PERSON is also used in <EditIdentity> but mediaSize is not used there
 export const FETCH_PERSON = gql`
   query FetchPerson($username: String!) {
     fetchPerson(preferredUsername: $username) {
       ...ActorFragment
       suspended
       avatar {
-        id
+        uuid
         name
         url
       }
       banner {
-        id
+        uuid
+        url
+      }
+    }
+  }
+  ${ACTOR_FRAGMENT}
+`;
+
+// used in <EditIdentity>
+export const FETCH_PERSON_OWNED = gql`
+  query FetchPerson($username: String!) {
+    fetchPerson(preferredUsername: $username) {
+      ...ActorFragment
+      suspended
+      avatar {
+        uuid
+        name
+        url
+      }
+      banner {
+        uuid
         url
       }
       feedTokens {
@@ -42,6 +62,7 @@ export const FETCH_PERSON = gql`
   ${ACTOR_FRAGMENT}
 `;
 
+// used by admin panel, profile view
 export const GET_PERSON = gql`
   query Person(
     $actorId: ID!
@@ -57,12 +78,12 @@ export const GET_PERSON = gql`
       suspended
       mediaSize
       avatar {
-        id
+        uuid
         name
         url
       }
       banner {
-        id
+        uuid
         url
       }
       feedTokens {
@@ -118,7 +139,7 @@ export const PERSON_FRAGMENT = gql`
   fragment PersonFragment on Person {
     id
     avatar {
-      id
+      uuid
       url
     }
     type
@@ -215,7 +236,7 @@ export const LOGGED_USER_DRAFTS = gql`
           title
           draft
           picture {
-            id
+            uuid
             url
             alt
           }
@@ -266,7 +287,7 @@ export const LOGGED_USER_MEMBERSHIPS = gql`
                 id
                 title
                 picture {
-                  id
+                  uuid
                   url
                 }
               }
@@ -449,29 +470,6 @@ export const DELETE_PERSON = gql`
       preferredUsername
     }
   }
-`;
-
-/**
- * This one is used only to register the first account.
- * Prefer CREATE_PERSON when creating another identity
- */
-export const REGISTER_PERSON = gql`
-  mutation RegisterPerson(
-    $preferredUsername: String!
-    $name: String!
-    $summary: String!
-    $email: String!
-  ) {
-    registerPerson(
-      preferredUsername: $preferredUsername
-      name: $name
-      summary: $summary
-      email: $email
-    ) {
-      ...ActorFragment
-    }
-  }
-  ${ACTOR_FRAGMENT}
 `;
 
 export const SUSPEND_PROFILE = gql`
