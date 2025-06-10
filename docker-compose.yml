@@ -9,6 +9,7 @@ services:
       - POSTGRES_PASSWORD
       - POSTGRES_DB
       - POSTGRES_PORT
+      - MOBILIZON_INSTANCE_DEFAULT_LANGUAGE
     volumes:
       - pgdata:/var/lib/postgresql/data
   api:
@@ -26,6 +27,7 @@ services:
       MIX_ENV: "dev"
       DOCKER: "true"
       MOBILIZON_INSTANCE_NAME: My Mobilizon Instance
+      MOBILIZON_INSTANCE_DEFAULT_LANGUAGE: ${MOBILIZON_INSTANCE_DEFAULT_LANGUAGE}
       MOBILIZON_INSTANCE_HOST: localhost
       MOBILIZON_INSTANCE_HOST_PORT: 4000
       MOBILIZON_INSTANCE_PORT: 4000

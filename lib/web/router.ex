@@ -74,6 +74,7 @@ defmodule Mobilizon.Web.Router do
     plug(:put_request_context)
 
     plug(Mobilizon.Web.Plugs.SetLocalePlug)
+    plug(Mobilizon.Web.Plugs.SetFrontendLanguagePlug)
 
     plug(Cldr.Plug.AcceptLanguage,
       cldr_backend: Mobilizon.Cldr,
