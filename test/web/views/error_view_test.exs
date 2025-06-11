@@ -1,5 +1,5 @@
 defmodule Mobilizon.Web.ErrorViewTest do
-  use Mobilizon.Web.ConnCase, async: true
+  use Mobilizon.Web.ConnCase, async: false
 
   # Bring render/3 and render_to_string/3 for testing custom views
   import Phoenix.View
