@@ -82,6 +82,7 @@ config :mobilizon, :instance,
   email_from: System.get_env("MOBILIZON_INSTANCE_EMAIL"),
   email_reply_to: System.get_env("MOBILIZON_INSTANCE_EMAIL"),
   registrations_open: System.get_env("MOBILIZON_INSTANCE_REGISTRATIONS_OPEN") == "true",
+  default_language: System.get_env("MOBILIZON_INSTANCE_DEFAULT_LANGUAGE", "en"),
   groups: true
 
 config :mobilizon, Mobilizon.Web.Auth.Guardian,

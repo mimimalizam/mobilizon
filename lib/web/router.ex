@@ -74,6 +74,7 @@ defmodule Mobilizon.Web.Router do
     plug(:put_request_context)
 
     plug(Mobilizon.Web.Plugs.SetLocalePlug)
+    plug(Mobilizon.Web.Plugs.SetFrontendLanguagePlug)
 
     plug(Cldr.Plug.AcceptLanguage,
       cldr_backend: Mobilizon.Cldr,
@@ -219,7 +220,15 @@ defmodule Mobilizon.Web.Router do
     # Have a look at https://github.com/ueberauth/ueberauth/issues/125 some day
     # Also possible CSRF issue
     get("/auth/:provider/callback", AuthController, :callback)
-    post("/auth/:provider/callback", AuthController, :callback)
+    # Sobelow lint task identified the CSRF issue
+    # Ueberauth, the OAuth library used in the application,
+    # performs the callback via an HTTP redirect,
+    # provider issues a GET request to this path.
+    # The following integration tests also use a GET call
+    # - application_controller_test
+    # - auth_controller_test
+    # so, the POST route is commented
+    # post("/auth/:provider/callback", AuthController, :callback)
 
     post("/apps", ApplicationController, :create_application)
     get("/oauth/authorize", ApplicationController, :authorize)
@@ -229,6 +238,7 @@ defmodule Mobilizon.Web.Router do
 
   pipeline :login do
     plug(:accepts, ["html", "json"])
+    plug(:put_secure_browser_headers)
   end
 
   scope "/", Mobilizon.Web do
