@@ -220,7 +220,15 @@ defmodule Mobilizon.Web.Router do
     # Have a look at https://github.com/ueberauth/ueberauth/issues/125 some day
     # Also possible CSRF issue
     get("/auth/:provider/callback", AuthController, :callback)
-    post("/auth/:provider/callback", AuthController, :callback)
+    # Sobelow lint task identified the CSRF issue
+    # Ueberauth, the OAuth library used in the application,
+    # performs the callback via an HTTP redirect,
+    # provider issues a GET request to this path.
+    # The following integration tests also use a GET call
+    # - application_controller_test
+    # - auth_controller_test
+    # so, the POST route is commented
+    # post("/auth/:provider/callback", AuthController, :callback)
 
     post("/apps", ApplicationController, :create_application)
     get("/oauth/authorize", ApplicationController, :authorize)
