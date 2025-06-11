@@ -230,7 +230,6 @@ defmodule Mobilizon.Web.Router do
 
   pipeline :login do
     plug(:accepts, ["html", "json"])
-    plug(:put_secure_browser_headers)
   end
 
   scope "/", Mobilizon.Web do
