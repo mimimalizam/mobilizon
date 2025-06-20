@@ -885,7 +885,7 @@ msgstr "Ако нисте активирали ову е-пошту, занем�
 msgid "If you wish to cancel your attendance, visit the event page through the link above and click the « Attending » button."
 msgstr ""
 "Ако желите отказати своје присуствовање, посети страницу догађаја путем "
-"горњег линка и притисни дугме „Присуствовање”.
+"горњег линка и притисни дугме „Присуствовање”."
 
 #: lib/web/templates/email/email.html.heex:193
 #: lib/web/templates/email/email.text.eex:11
