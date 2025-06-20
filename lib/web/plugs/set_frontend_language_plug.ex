@@ -70,7 +70,7 @@ defmodule Mobilizon.Web.Plugs.SetFrontendLanguagePlug do
       locale in locales -> locale
       # Either the first part matches, "fr_CA" => "fr"
       split_locale(locale) in locales -> split_locale(locale)
-      locale == "sr_cyr" -> "sr-cyr"
+      locale == "sr_Cyrl" -> "sr-Cyrl"
       # Otherwise set to default
       true -> nil
     end

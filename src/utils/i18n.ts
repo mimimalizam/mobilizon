@@ -73,7 +73,7 @@ function vueI18NfileForLanguage(lang: string) {
   const matches: Record<string, string> = {
     fr: "fr_FR",
     en: "en_US",
-    sr: "sr_cyr",
+    sr: "sr_Cyrl",
   };
   return fileForLanguage(matches, lang);
 }
