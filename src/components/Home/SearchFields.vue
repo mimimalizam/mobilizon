@@ -185,7 +185,6 @@ const select_button_class = (current_content_type: string) => {
 };
 
 const number_result = (current_content_type: string) => {
-  console.log(">> number_result", props.numberOfSearch);
   if (props.numberOfSearch == undefined) {
     return "";
   }
