@@ -36,7 +36,7 @@ msgstr "već je zauzeto"
 
 ## From Ecto.Changeset.put_change/3
 msgid "is invalid"
-msgstr "je neispravno"
+msgstr "nije ispravno"
 
 ## From Ecto.Changeset.validate_acceptance/3
 msgid "must be accepted"
@@ -270,17 +270,17 @@ msgstr "Već jesi član ove grupe"
 #: lib/graphql/resolvers/group.ex:350
 #, elixir-autogen, elixir-format
 msgid "You can't leave this group because you are the only administrator"
-msgstr "Ne možeš napustiti ovu grupu jer si jedini administrator"
+msgstr "Ne možete napustiti ovu grupu jer si jedini administrator"
 
 #: lib/graphql/resolvers/group.ex:308
 #, elixir-autogen, elixir-format
 msgid "You cannot join this group"
-msgstr "Ne možeš se pridružiti ovoj grupi"
+msgstr "Ne možete se pridružiti ovoj grupi"
 
 #: lib/graphql/resolvers/group.ex:132
 #, elixir-autogen, elixir-format
 msgid "You may not list groups unless moderator."
-msgstr "Ne možeš izraditi popis grupa ako nisi moderator."
+msgstr "Ne možete izraditi popis grupa ako nisi moderator."
 
 #: lib/graphql/resolvers/user.ex:503
 #, elixir-autogen, elixir-format
@@ -325,7 +325,7 @@ msgstr "Za primanje tokena za osvežavanje moraš imati postojeći token"
 #: lib/graphql/resolvers/user.ex:180
 #, elixir-autogen, elixir-format
 msgid "Your email is not on the allowlist"
-msgstr "Tvoja e-mail adresa nije na popisu dopuštenih"
+msgstr "Vaša e-mail adresa nije na popisu dopuštenih"
 
 #: lib/graphql/resolvers/actor.ex:100
 #, elixir-autogen, elixir-format
@@ -836,12 +836,12 @@ msgstr "Moraš biti prijavljen/a"
 #: lib/graphql/resolvers/member.ex:118
 #, elixir-autogen, elixir-format
 msgid "You can't accept this invitation with this profile."
-msgstr "Ovu pozivnicu ne možeš prihvatiti s ovim profilom."
+msgstr "Ovu pozivnicu ne možete prihvatiti s ovim profilom."
 
 #: lib/graphql/resolvers/member.ex:139
 #, elixir-autogen, elixir-format
 msgid "You can't reject this invitation with this profile."
-msgstr "Ovu pozivnicu ne možeš odbiti s ovim profilom."
+msgstr "Ovu pozivnicu ne možete odbiti s ovim profilom."
 
 #: lib/graphql/resolvers/media.ex:71
 #, elixir-autogen, elixir-format
@@ -861,7 +861,7 @@ msgstr "Izmena ovog događaja nije moguća."
 #: lib/graphql/resolvers/event.ex:388
 #, elixir-autogen, elixir-format
 msgid "You can't attribute this event to this profile."
-msgstr "Ovaj događaj ne možeš pripisati ovom profilu."
+msgstr "Ovaj događaj ne možete pripisati ovom profilu."
 
 #: lib/graphql/resolvers/member.ex:142
 #, elixir-autogen, elixir-format
@@ -942,7 +942,7 @@ msgstr "Ovaj profil nema dozvolu za ažuriranje događaja u ime ove grupe"
 #: lib/graphql/resolvers/user.ex:184
 #, elixir-autogen, elixir-format
 msgid "Your e-mail has been denied registration or uses a disallowed e-mail provider"
-msgstr "Tvoja e-mail adresa je odbijena za registraciju ili koristi nedozvoljenog provajdera e-pošte"
+msgstr "Vaša e-mail adresa je odbijena za registraciju ili koristi nedozvoljenog provajdera e-pošte"
 
 #: lib/graphql/resolvers/comment.ex:156
 #, elixir-autogen, elixir-format
@@ -1003,7 +1003,7 @@ msgstr "Nisi autor komentara"
 #: lib/graphql/resolvers/user.ex:471
 #, elixir-autogen, elixir-format
 msgid "You cannot change your password."
-msgstr "Ne možeš promeniti svoju lozinku."
+msgstr "Ne možete promeniti svoju lozinku."
 
 #: lib/graphql/resolvers/participant.ex:335
 #, elixir-autogen, elixir-format
@@ -1103,12 +1103,12 @@ msgstr "Za uklanjanje člana moraš biti prijavljen/a"
 #: lib/graphql/resolvers/user.ex:174
 #, elixir-autogen, elixir-format
 msgid "Your email seems to be using an invalid format"
-msgstr "Tvoja e-mail adresa koristi nevažeći format"
+msgstr "Vaša e-mail adresa koristi nevažeći format"
 
 #: lib/graphql/resolvers/admin.ex:400
 #, elixir-autogen, elixir-format
 msgid "Can't confirm an already confirmed user"
-msgstr "Ne možeš potvrditi već potvrđenog korisnika"
+msgstr "Ne možete potvrditi već potvrđenog korisnika"
 
 #: lib/graphql/resolvers/admin.ex:404
 #, elixir-autogen, elixir-format
@@ -1165,7 +1165,7 @@ msgstr "Nepodržani status za izveštaj"
 #: lib/graphql/api/reports.ex:127
 #, elixir-autogen, elixir-format
 msgid "You can only remove your own notes"
-msgstr "Možeš ukloniti samo svoje beleške"
+msgstr "možete ukloniti samo svoje beleške"
 
 #: lib/graphql/api/reports.ex:94
 #: lib/graphql/api/reports.ex:121
@@ -1176,12 +1176,12 @@ msgstr "Moraš biti moderator ili administrator da bi kreirao belešku u izvešt
 #: lib/graphql/resolvers/person.ex:332
 #, elixir-autogen, elixir-format
 msgid "Your profile was detected as spam."
-msgstr "Tvoj profil je označen kao spam."
+msgstr "Vaš profil je označen kao spam."
 
 #: lib/graphql/resolvers/user.ex:191
 #, elixir-autogen, elixir-format
 msgid "Your registration has been detected as spam and cannot be processed."
-msgstr "Tvoja registracija je označena kao spam i ne može biti obrađena."
+msgstr "Vaša registracija je označena kao spam i ne može biti obrađena."
 
 #: lib/web/controllers/application_controller.ex:88
 #, elixir-autogen, elixir-format
