@@ -41,5 +41,7 @@ config :mobilizon, :cldr,
     "pt",
     "ru",
     "sv",
-    "zh_Hant"
+    "zh_Hant",
+    "sr_Cyrl",
+    "sr_Latn"
   ]

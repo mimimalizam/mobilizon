@@ -222,7 +222,9 @@ config :mobilizon, :cldr,
     "fr",
     "en",
     "ru",
-    "ar"
+    "ar",
+    "sr_Cyrl",
+    "sr_Latn"
   ]
 
 config :mobilizon, :activitypub,
