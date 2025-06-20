@@ -964,7 +964,7 @@ msgid ""
 "one click away from activating it."
 msgstr ""
 "Otvorio/la si nalog na <b>%{host}</b> s ovom e-mail adresom. Od aktivacije "
-"naloga te dijeli još jedan korak."
+"naloga te deli još jedan korak."
 
 #: lib/web/templates/email/report.html.heex:18
 #, elixir-autogen, elixir-format
