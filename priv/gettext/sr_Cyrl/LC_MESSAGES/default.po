@@ -744,7 +744,7 @@ msgstr "Треба вам помоћ? Нешто не функционише к�
 #, elixir-autogen, elixir-format
 msgid "You created an account on <b>%{host}</b> with this email address. You are one click away from activating it."
 msgstr "Отворио/ла си налог на <b>%{host}</b> с овом е-маил адресом. Од активације "
-"naloga te dijeli još jedan korak."
+"налога те дели још један корак."
 
 #: lib/web/templates/email/report.html.heex:18
 #, elixir-autogen, elixir-format
