@@ -1795,7 +1795,7 @@ msgstr "Здраво! Желимо да Вас обавестимо да је а
 #: lib/web/templates/email/admin_user_role_changed.html.heex:88
 #, elixir-autogen, elixir-format
 msgid "If something doesn't feel right to you, please contact the instance administrator through the contact methods %{start_link}on the instance's about page%{end_link}."
-msgstr "Ако Вам нешто не делује у реду, контактирајте администратора инстанце путем контакт информација %{about_page}на страници о инстанци%{end_link}."
+msgstr "Ако Вам нешто не делује у реду, контактирајте администратора инстанце путем контакт информација %{start_link}на страници о инстанци%{end_link}."
 
 #: lib/web/templates/email/admin_user_confirmation.text.eex:7
 #: lib/web/templates/email/admin_user_email_changed_new.text.eex:4
