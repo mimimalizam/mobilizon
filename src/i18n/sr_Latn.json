@@ -689,6 +689,7 @@
   "Comment text can't be empty": "Tekst komentara ne može biti prazan",
   "Notifications": "Obaveštenja",
   "Profile feeds": "Fidovi profila",
+  "These feeds contain event data for the events for which this specific profile is a participant or creator.You should keep these private. You can find feeds for all of your profiles into your notification settings.": "Ovi fidovi sadrže podatke o događajima u kojima je ovaj profil učesnik ili organizator. Preporučuje se da ovo ostane privatno. Možete pronaći fidove za sve vaše profile u podešavanjima obaveštenja.",
   "These feeds contain event data for the events for which this specific profile is a participant or creator. You should keep these private. You can find feeds for all of your profiles into your notification settings.": "Ovi fidovi sadrže podatke o događajima u kojima je ovaj profil učesnik ili organizator. Preporučuje se da ovo ostane privatno. Možete pronaći fidove za sve vaše profile u podešavanjima obaveštenja.",
   "Regenerate new links": "Ponovo generišite nove linkove",
   "Create new links": "Napravite nove linkove",
