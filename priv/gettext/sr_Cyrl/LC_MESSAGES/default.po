@@ -122,7 +122,7 @@ msgstr "Нови наслов: %{title}"
 #: lib/web/templates/email/password_reset.text.eex:5
 #, elixir-autogen, elixir-format
 msgid "You requested a new password for your account on %{instance}."
-msgstr "Затражио/ла си нову лозинку за ваш налог на %{instance}."
+msgstr "Затражили сте нову лозинку за ваш налог на %{instance}."
 
 #: lib/web/templates/email/email.html.heex:105
 #, elixir-autogen, elixir-format
@@ -151,8 +151,8 @@ msgstr "Интерни кориснички ИД"
 msgctxt "terms"
 msgid "Any of the information we collect from you may be used in the following ways:"
 msgstr ""
-"Sve informacije koje prikupljamo od tebe mogu se koristiti na sledeće "
-"načine:"
+"Све информације које прикупљамо од тебе могу се користити на следеће "
+"начине:"
 
 #: lib/web/templates/api/privacy.html.heex:13
 #, elixir-autogen, elixir-format
@@ -201,8 +201,8 @@ msgstr "Објављени догађаји и коментари"
 msgctxt "terms"
 msgid "Retain the IP addresses associated with registered users no more than 12 months."
 msgstr ""
-"Zadrži IP adrese koje su povezane s registrovanim korisnicima ne duže od 12 "
-"meseci."
+"Задржи ИП адресе које су повезане с регистрованим корисницима не дуже од 12 "
+"месеци."
 
 #: lib/web/templates/api/privacy.html.heex:107
 #, elixir-autogen, elixir-format
@@ -269,16 +269,16 @@ msgstr "Ако се овај сервер налази у САД-у: Наша с
 msgctxt "terms"
 msgid "If we decide to change our privacy policy, we will post those changes on this page."
 msgstr ""
-"Ako odlučimo promieniti našu politiku privatnosti, te promene ćemo "
-"objaviti na ovoj stranici."
+"Ако одлучимо промиенити нашу политику приватности, те промене ћемо "
+"објавити на овој страници."
 
 #: lib/web/templates/api/privacy.html.heex:153
 #, elixir-autogen, elixir-format
 msgctxt "terms"
 msgid "Law requirements can be different if this server is in another jurisdiction."
 msgstr ""
-"Zakonske regulative se mogu razlikovati ako se ovaj server nalazi u nekoj "
-"drugoj jurisdikciji."
+"Законске регулативе се могу разликовати ако се овај сервер налази у некој "
+"другој јурисдикцији."
 
 #: lib/web/templates/api/privacy.html.heex:137
 #, elixir-autogen, elixir-format
@@ -418,7 +418,7 @@ msgstr "Организатор догађаја није додао опис."
 #, elixir-autogen, elixir-format
 msgctxt "terms"
 msgid "We implement a variety of security measures to maintain the safety of your personal information when you enter, submit, or access your personal information. Among other things, your browser session, as well as the traffic between your applications and the API, are secured with SSL/TLS, and your password is hashed using a strong one-way algorithm."
-msgstr "Применујемо различите мере безбедности како бисмо заштитили ваше личне податке приликом њиховог уноса, слања или приступа. Између осталог, ваша сесија у претраживачу, као и саобраћај између ваших апликација и АПИ-ја, заштићени су помоћу ССЛ/ТЛС протокола, а ваша лозинка се хешира коришћењем снажног једносмерног алгоритма."
+msgstr "Примењујемо различите мере безбедности како бисмо заштитили ваше личне податке приликом њиховог уноса, слања или приступа. Између осталог, ваша сесија у претраживачу, као и саобраћај између ваших апликација и АПИ-ја, заштићени су помоћу ССЛ/ТЛС протокола, а ваша лозинка се хешира коришћењем снажног једносмерног алгоритма."
 
 #: lib/web/templates/api/privacy.html.heex:126
 #, elixir-autogen, elixir-format
@@ -466,7 +466,7 @@ msgstr "Прикупити било какве личне податке о др
 #, elixir-autogen, elixir-format
 msgctxt "terms"
 msgid "Content that is illegal or unlawful, that would otherwise create liability;"
-msgstr "Садржај који је незаконит или противан закону, који би могао створити одговорност;"
+msgstr "Садржај који је незаконит или противан праву, или који би на други начин могао да створи правну одговорност.;"
 
 #: lib/web/templates/api/terms.html.heex:173
 #, elixir-autogen, elixir-format
@@ -648,8 +648,8 @@ msgstr "Администратори инстанце (и модератори �
 msgctxt "terms"
 msgid "<b>%{instance_name}</b> will not use or transmit or resell your personal data"
 msgstr ""
-"<b>%{instance_name}</b> neće koristiti, prenositi niti preprodavati vaše "
-"lične podatke"
+"<b>%{instance_name}</b> неће користити, преносити нити препродавати ваше "
+"личне податке"
 
 #: lib/web/templates/api/terms.html.heex:113
 #, elixir-autogen, elixir-format
@@ -704,7 +704,7 @@ msgstr "Овај документ је лиценциран под <a href=\"htt
 msgctxt "terms"
 msgid "You must respect other people and <b>%{instance_name}</b>'s rules when using the service"
 msgstr "Мораш поштовати друге људе и правила инстанце <b>%{instance_name}</b> кад "
-"koristiš uslugu"
+"користиш услугу"
 
 #: lib/web/templates/api/terms.html.heex:15
 #, elixir-autogen, elixir-format
@@ -716,7 +716,7 @@ msgstr "Мораш поштовати закон кад користиш инс�
 #, elixir-autogen, elixir-format
 msgctxt "terms"
 msgid "Your content is yours"
-msgstr "Ваш садржај припада теби"
+msgstr "Ваш садржај припада вама"
 
 #: lib/web/templates/email/anonymous_participation_confirmation.html.heex:73
 #, elixir-autogen, elixir-format
@@ -847,8 +847,8 @@ msgid "Hi there! It seems like you wanted to change the email address linked to 
 msgstr ""
 "Здраво! Чини се да желиш променити е-маил адресу која је повезана с вашим "
 "налогом на инстанци <b>%{instance}</b>. Ako želiš nastaviti, pritisni donje "
-"dugme za potvrđivanje promene. Nakon toga ćeš se moći prijaviti na instanci "
-"%{instance} s ovom novom e-mail adresom."
+"дугме за потврђивање промене. Након тога ћеш се моћи пријавити на инстанци "
+"%{instance} с овом новом е-маил адресом."
 
 #: lib/web/templates/email/email_changed_old.text.eex:3
 #, elixir-autogen, elixir-format
@@ -1567,7 +1567,7 @@ msgstr "Од %{start} до %{end}"
 #: lib/web/templates/email/participation/event_card.html.heex:47
 #, elixir-autogen, elixir-format
 msgid "Manage your participation"
-msgstr "Управљај својим чалнством"
+msgstr "Управљај својим члaнством"
 
 #: lib/web/templates/email/date/event_tz_date_range.html.heex:11
 #: lib/web/templates/email/date/event_tz_date_range.text.eex:1
