@@ -53,22 +53,39 @@ msgstr "su još uvek povezani s ovim unosom"
 
 # From Ecto.Changeset.validate_length/3
 msgid "should be %{count} character(s)"
-msgstr ""
+msgstr[0] "trebao bi biti %{count} znak"
+msgstr[1] "trebalo bi biti %{count} znaka"
+msgstr[2] "trebalo bi biti %{count} znakova"
 
 msgid "should have %{count} item(s)"
-msgstr ""
+msgid_plural "should have %{count} item(s)"
+msgstr[0] "treba imati %{count} element"
+msgstr[1] "treba imati %{count} elementa"
+msgstr[2] "treba imati %{count} elemenata"
 
 msgid "should be at least %{count} character(s)"
-msgstr ""
+msgid_plural "should be at least %{count} character(s)"
+msgstr[0] "treba imati barem %{count} znak"
+msgstr[1] "treba imati barem %{count} znaka"
+msgstr[2] "treba imati barem %{count} znakova"
 
 msgid "should have at least %{count} item(s)"
-msgstr ""
+msgid_plural "should have at least %{count} item(s)"
+msgstr[0] "treba imati barem %{count} element"
+msgstr[1] "treba imati barem %{count} elementa"
+msgstr[2] "treba imati barem %{count} elemenata"
 
 msgid "should be at most %{count} character(s)"
-msgstr ""
+msgid_plural "should be at most %{count} character(s)"
+msgstr[0] "treba imati ne više od %{count} znak"
+msgstr[1] "treba imati ne više od %{count} znaka"
+msgstr[2] "treba imati ne više od %{count} znakova"
 
 msgid "should have at most %{count} item(s)"
-msgstr ""
+msgid_plural "should have at most %{count} item(s)"
+msgstr[0] "treba imati ne više od %{count} elementa"
+msgstr[1] "treba imati ne više od %{count} elementa"
+msgstr[2] "treba imati ne više od %{count} elemenata"
 
 # From Ecto.Changeset.validate_number/3
 msgid "must be less than %{number}"
@@ -788,7 +805,7 @@ msgstr "Ovu pozivnicu ne možete odbiti s ovim profilom."
 #: lib/graphql/resolvers/media.ex:71
 #, elixir-autogen, elixir-format
 msgid "File doesn't have an allowed MIME type."
-msgstr "Datoteka nema dozvoljenu MIME vrstu."
+msgstr "Datoteka nema dozvoljeni MIME tip."
 
 #: lib/graphql/resolvers/group.ex:244
 #, elixir-autogen, elixir-format

@@ -358,13 +358,13 @@ msgstr "Mobilizon na %{instance}: e-mail adresa se promenila"
 #: lib/web/email/notification.ex:52
 #, elixir-format, elixir-autogen
 msgid "One event planned today"
-msgstr ""
+msgstr "Jedan događaj je planiran za danas"
 
 #: lib/web/templates/email/on_day_notification.html.heex:47
 #: lib/web/templates/email/on_day_notification.text.eex:3
 #, elixir-format, elixir-autogen
 msgid "You have one event today:"
-msgstr ""
+msgstr "Imate jedan događaj danas:"
 
 #: lib/web/templates/email/group_invite.text.eex:3
 #, elixir-autogen, elixir-format
@@ -412,18 +412,18 @@ msgstr "%{inviter} te pozvao/la da se pridružiš grupi %{group}"
 #: lib/web/email/notification.ex:81
 #, elixir-format, elixir-autogen
 msgid "One event planned this week"
-msgstr ""
+msgstr "Jedan događaj je planiran ove nedelje"
 
 #: lib/web/email/notification.ex:107
 #, elixir-format, elixir-autogen
 msgid "One participation request for event %{title} to process"
-msgstr ""
+msgstr "Zahtev jednog učesnika %{title} za procesiranje"
 
 #: lib/web/templates/email/notification_each_week.html.heex:47
 #: lib/web/templates/email/notification_each_week.text.eex:3
 #, elixir-format, elixir-autogen
 msgid "You have one event this week:"
-msgstr ""
+msgstr "Imate jedan događaj ove nedelje:"
 
 #: lib/service/metadata/utils.ex:53
 #, elixir-autogen, elixir-format
@@ -929,7 +929,7 @@ msgstr "Moraš poštovati zakon kad koristiš instancu <b>%{instance_name}</b>"
 #: lib/web/templates/api/terms.html.heex:5
 #, elixir-autogen, elixir-format
 msgid "Your content is yours"
-msgstr "Vaš sadržaj pripada tebi"
+msgstr "Vaš sadržaj pripada vama"
 
 #: lib/web/templates/email/anonymous_participation_confirmation.html.heex:73
 #, elixir-autogen, elixir-format
