@@ -479,7 +479,7 @@ defmodule Mobilizon.GraphQL.Schema.EventType do
       arg(:language, :string, description: "The event language", default_value: "und")
 
       middleware(Rajska.QueryAuthorization,
-        permit: :user,
+        permit: [:moderator, :administrator],
         scope: Mobilizon.Events.Event,
         rule: :"write:event:create",
         args: %{organizer_actor_id: :organizer_actor_id}
@@ -536,7 +536,7 @@ defmodule Mobilizon.GraphQL.Schema.EventType do
       arg(:language, :string, description: "The event language", default_value: "und")
 
       middleware(Rajska.QueryAuthorization,
-        permit: :user,
+        permit: [:moderator, :administrator],
         scope: Mobilizon.Events.Event,
         args: %{id: :event_id},
         rule: :"write:event:update"
@@ -550,7 +550,7 @@ defmodule Mobilizon.GraphQL.Schema.EventType do
       arg(:event_id, non_null(:id), description: "The event ID to delete")
 
       middleware(Rajska.QueryAuthorization,
-        permit: [:user, :moderator, :administrator],
+        permit: [:moderator, :administrator],
         scope: Mobilizon.Events.Event,
         rule: :"write:event:delete",
         args: %{id: :event_id}
