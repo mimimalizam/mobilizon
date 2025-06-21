@@ -49,6 +49,7 @@ defmodule Mobilizon.Federation.ActivityPubTest do
   end
 
   describe "fetching an" do
+    @tag external: true
     test "object by url" do
       url = "https://framapiaf.org/users/Framasoft/statuses/102093631881522097"
 
@@ -76,6 +77,7 @@ defmodule Mobilizon.Federation.ActivityPubTest do
       assert object.id == object_again.id
     end
 
+    @tag external: true
     test "object reply by url" do
       url = "https://pirateradio.social/notice/A5XnLBsFNQDKtthzM0"
       reply_to_url = "https://framapiaf.org/users/peertube/statuses/105945857653893100"
@@ -109,6 +111,7 @@ defmodule Mobilizon.Federation.ActivityPubTest do
       assert object.in_reply_to_comment.url == reply_to_url
     end
 
+    @tag external: true
     test "object reply to a video by url" do
       url = "https://diaspodon.fr/users/dada/statuses/100820008426311925"
       origin_url = "https://framatube.org/videos/watch/9c9de5e8-0a1e-484a-b099-e80766180a6d"
@@ -307,6 +310,7 @@ defmodule Mobilizon.Federation.ActivityPubTest do
   @updated_resource_title "my updated resource"
   @folder_title "my folder"
   describe "create resources" do
+    @tag external: true
     test "it creates a resource" do
       with_mock Utils, [:passthrough], maybe_federate: fn _ -> :ok end do
         actor = insert(:actor)

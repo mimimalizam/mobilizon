@@ -115,7 +115,7 @@ deps:
   tags:
     - nikola
 
-exunit:
+exunit_internal:
   stage: test
   services:
     - name: postgis/postgis:16-3.4
@@ -129,7 +129,33 @@ exunit:
     - mix ecto.create
     - mix ecto.migrate
   script:
-    - mix coveralls
+    - mix coveralls --exclude external:true
+  artifacts:
+    when: always
+    reports:
+      junit:
+        - test-junit-report.xml
+    expire_in: 30 days
+  tags:
+    - nikola
+
+exunit_external:
+  stage: test
+  services:
+    - name: postgis/postgis:16-3.4
+      alias: postgres
+  variables:
+    MIX_ENV: test
+  needs:
+    - exunit_internal
+  before_script:
+    - mix deps.get
+    - mix compile
+    - mix tz_world.update
+    - mix ecto.create
+    - mix ecto.migrate
+  script:
+    - mix coveralls --only external:true
   artifacts:
     when: always
     reports:
