@@ -16,6 +16,11 @@ defmodule Mobilizon.GraphQL.Resolvers.UserTest do
   alias Mobilizon.Web.Email
   import Swoosh.TestAssertions
 
+  setup do
+    Mobilizon.Config.clear_config_cache()
+    :ok
+  end
+
   @get_user_query """
   query GetUser($id: ID!) {
     user(id: $id) {
@@ -437,6 +442,7 @@ defmodule Mobilizon.GraphQL.Resolvers.UserTest do
       Config.put([:instance, :registration_email_allowlist], [])
     end
 
+    @tag external: true
     test "create_user/3 allows registration when user email domain is on the allowlist", %{
       conn: conn
     } do
