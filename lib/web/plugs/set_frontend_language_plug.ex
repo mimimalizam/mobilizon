@@ -6,7 +6,6 @@ defmodule Mobilizon.Web.Plugs.SetFrontendLanguagePlug do
     - language from URL ("/fr" -> "fr")
     - user-specified language from the database (:user_locale)
     (value from the locale column in the users table)
-    - language from the Accept-Language header (:detected_locale)
     - Value from an environment variable
     - English (en)
   """
@@ -22,7 +21,6 @@ defmodule Mobilizon.Web.Plugs.SetFrontendLanguagePlug do
       [
         eventual_path_locale(conn.path_info),
         conn.assigns[:user_locale],
-        conn.assigns[:detected_locale],
         default_locale()
       ]
       |> Enum.filter(& &1)
