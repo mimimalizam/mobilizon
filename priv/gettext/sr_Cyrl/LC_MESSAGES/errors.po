@@ -54,39 +54,39 @@ msgstr "су још увек повезани с овим уносом"
 ## From Ecto.Changeset.validate_length/3
 msgid "should be %{count} character(s)"
 msgid_plural "should be %{count} character(s)"
-msgstr[0] "trebao bi biti %{count} znak"
-msgstr[1] "trebalo bi biti %{count} znaka"
-msgstr[2] "trebalo bi biti %{count} znakova"
+msgstr[0] "требао би бити %{count} znak"
+msgstr[1] "требало би бити %{count} znaka"
+msgstr[2] "требало би бити %{count} znakova"
 
 msgid "should have %{count} item(s)"
 msgid_plural "should have %{count} item(s)"
-msgstr[0] "treba imati %{count} element"
-msgstr[1] "treba imati %{count} elementa"
-msgstr[2] "treba imati %{count} elemenata"
+msgstr[0] "треба имати %{count} element"
+msgstr[1] "треба имати %{count} elementa"
+msgstr[2] "треба имати %{count} elemenata"
 
 msgid "should be at least %{count} character(s)"
 msgid_plural "should be at least %{count} character(s)"
-msgstr[0] "treba imati barem %{count} znak"
-msgstr[1] "treba imati barem %{count} znaka"
-msgstr[2] "treba imati barem %{count} znakova"
+msgstr[0] "треба имати барем %{count} znak"
+msgstr[1] "треба имати барем %{count} znaka"
+msgstr[2] "треба имати барем %{count} znakova"
 
 msgid "should have at least %{count} item(s)"
 msgid_plural "should have at least %{count} item(s)"
-msgstr[0] "treba imati barem %{count} element"
-msgstr[1] "treba imati barem %{count} elementa"
-msgstr[2] "treba imati barem %{count} elemenata"
+msgstr[0] "треба имати барем %{count} element"
+msgstr[1] "треба имати барем %{count} elementa"
+msgstr[2] "треба имати барем %{count} elemenata"
 
 msgid "should be at most %{count} character(s)"
 msgid_plural "should be at most %{count} character(s)"
-msgstr[0] "treba imati ne više od %{count} znak"
-msgstr[1] "treba imati ne više od %{count} znaka"
-msgstr[2] "treba imati ne više od %{count} znakova"
+msgstr[0] "треба имати више од %{count} znak"
+msgstr[1] "треба имати више од %{count} znaka"
+msgstr[2] "треба имати више од %{count} znakova"
 
 msgid "should have at most %{count} item(s)"
 msgid_plural "should have at most %{count} item(s)"
-msgstr[0] "treba imati ne više od %{count} elementa"
-msgstr[1] "treba imati ne više od %{count} elementa"
-msgstr[2] "treba imati ne više od %{count} elemenata"
+msgstr[0] "треба имати више од %{count} elementa"
+msgstr[1] "треба имати више од %{count} elementa"
+msgstr[2] "треба имати више од %{count} elemenata"
 
 ## From Ecto.Changeset.validate_number/3
 msgid "must be less than %{number}"
@@ -230,7 +230,7 @@ msgstr "Овај корисник не може обновити своју ло
 #: lib/graphql/resolvers/user.ex:90
 #, elixir-autogen, elixir-format
 msgid "This user has been disabled"
-msgstr "Овај је корисник деактивиран"
+msgstr "Овај корисник је деактивиран"
 
 #: lib/graphql/resolvers/user.ex:278
 #: lib/graphql/resolvers/user.ex:283
@@ -266,47 +266,47 @@ msgstr "Не можете се придружити овој групи"
 #: lib/graphql/resolvers/group.ex:132
 #, elixir-autogen, elixir-format
 msgid "You may not list groups unless moderator."
-msgstr "Не можете израдити попис група ако ниси модератор."
+msgstr "Не можете израдити попис група ако нисте модератор."
 
 #: lib/graphql/resolvers/user.ex:503
 #, elixir-autogen, elixir-format
 msgid "You need to be logged-in to change your email"
-msgstr "За мењање е-маил адресе мораш бити пријављен/а"
+msgstr "За мењање е-маил адресе морате бити пријављени"
 
 #: lib/graphql/resolvers/user.ex:489
 #, elixir-autogen, elixir-format
 msgid "You need to be logged-in to change your password"
-msgstr "За мењање лозинке мораш бити пријављен/а"
+msgstr "За мењање лозинке морате бити пријављени"
 
 #: lib/graphql/resolvers/group.ex:285
 #, elixir-autogen, elixir-format
 msgid "You need to be logged-in to delete a group"
-msgstr "За брисање групе мораш бити пријављен/а"
+msgstr "За брисање групе морате бити пријављени"
 
 #: lib/graphql/resolvers/user.ex:610
 #, elixir-autogen, elixir-format
 msgid "You need to be logged-in to delete your account"
-msgstr "За брисање твог рачуна мораш бити пријављен/а"
+msgstr "За брисање вашег налога морате бити пријављени"
 
 #: lib/graphql/resolvers/group.ex:316
 #, elixir-autogen, elixir-format
 msgid "You need to be logged-in to join a group"
-msgstr "За придруживање групи мораш бити пријављен/а"
+msgstr "За придруживање групи морате бити пријављени"
 
 #: lib/graphql/resolvers/group.ex:355
 #, elixir-autogen, elixir-format
 msgid "You need to be logged-in to leave a group"
-msgstr "За напуштање групе мораш бити пријављен/а"
+msgstr "За напуштање групе морате бити пријављени"
 
 #: lib/graphql/resolvers/group.ex:249
 #, elixir-autogen, elixir-format
 msgid "You need to be logged-in to update a group"
-msgstr "За ажурирање групе мораш бити пријављен/а"
+msgstr "За ажурирање групе морате бити пријављени"
 
 #: lib/graphql/resolvers/user.ex:121
 #, elixir-autogen, elixir-format
 msgid "You need to have an existing token to get a refresh token"
-msgstr "За примање токена за освежавање мораш имати постојећи токен"
+msgstr "За примање токена за освежавање морате имати постојећи токен"
 
 #: lib/graphql/resolvers/user.ex:180
 #, elixir-autogen, elixir-format
@@ -439,7 +439,7 @@ msgstr "Не постоји такав токен за феед"
 #: lib/graphql/resolvers/participant.ex:266
 #, elixir-autogen, elixir-format
 msgid "Participant already has role %{role}"
-msgstr "Учесник већ има улогу %{роле}"
+msgstr "Учесник већ има улогу %{role}"
 
 #: lib/graphql/resolvers/participant.ex:191
 #: lib/graphql/resolvers/participant.ex:227
@@ -547,7 +547,7 @@ msgstr "Токен не постоји"
 #: lib/graphql/resolvers/feed_token.ex:70
 #, elixir-autogen, elixir-format
 msgid "Token is not a valid UUID"
-msgstr "Токен није исправан УУИД"
+msgstr "Токен није исправан UUID"
 
 #: lib/graphql/error.ex:112
 #, elixir-autogen, elixir-format
@@ -562,7 +562,7 @@ msgstr "Већ имаш профил за овог корисника"
 #: lib/graphql/resolvers/participant.ex:136
 #, elixir-autogen, elixir-format
 msgid "You are already a participant of this event"
-msgstr "Већ јеси учесник/ућесница у овом догађају"
+msgstr "Већ јесте учесник/учесница у овом догађају"
 
 #: lib/graphql/resolvers/member.ex:87
 #, elixir-autogen, elixir-format
@@ -574,17 +574,17 @@ msgstr "Ниси члан ове групе"
 #: lib/graphql/resolvers/member.ex:188
 #, elixir-autogen, elixir-format
 msgid "You are not a moderator or admin for this group"
-msgstr "Ниси модератор нити администратор за ову групу"
+msgstr "Нисте модератор нити администратор за ову групу"
 
 #: lib/graphql/resolvers/comment.ex:74
 #, elixir-autogen, elixir-format
 msgid "You are not allowed to create a comment if not connected"
-msgstr "Ако ниси повезан/а не смеш коментарисати"
+msgstr "Ако нисте повезани не смете коментарисати"
 
 #: lib/graphql/resolvers/feed_token.ex:41
 #, elixir-autogen, elixir-format
 msgid "You are not allowed to create a feed token if not connected"
-msgstr "Креирање токена за феед није дозвољено ако ниси повезан/а"
+msgstr "Креирање токена за фид није дозвољено ако ниси повезан/а"
 
 #: lib/graphql/resolvers/comment.ex:161
 #, elixir-autogen, elixir-format
@@ -594,19 +594,19 @@ msgstr "Брисање коментара није дозвољено ако н�
 #: lib/graphql/resolvers/feed_token.ex:82
 #, elixir-autogen, elixir-format
 msgid "You are not allowed to delete a feed token if not connected"
-msgstr "Ако ниси повезан/а не смијеш избрисати токен за феед"
+msgstr "Ако нисте повезани не смете избрисати токен за фид"
 
 #: lib/graphql/resolvers/comment.ex:120
 #, elixir-autogen, elixir-format
 msgid "You are not allowed to update a comment if not connected"
-msgstr "Ажурирање коментара није дозвољено ако ниси повезан/а"
+msgstr "Ажурирање коментара није дозвољено ако нисте повезани"
 
 #: lib/graphql/resolvers/participant.ex:185
 #: lib/graphql/resolvers/participant.ex:221
 #, elixir-autogen, elixir-format
 msgid "You can't leave event because you're the only event creator participant"
 msgstr ""
-"Не можеш напустити догађај јер сте једини учесник/учесница за "
+"Не можете напустити догађај јер сте једини учесник/учесница за "
 "стварање догађаја"
 
 #: lib/graphql/resolvers/member.ex:192
@@ -639,28 +639,28 @@ msgstr "Немате дозволу за брисање овог токена"
 #: lib/graphql/resolvers/admin.ex:57
 #, elixir-autogen, elixir-format
 msgid "You need to be logged-in and a moderator to list action logs"
-msgstr "За приказ записника радњи мораш бити пријављен/а и бити модератор"
+msgstr "За приказ записника радњи морате бити пријављени и бити модератор"
 
 #: lib/graphql/resolvers/report.ex:36
 #, elixir-autogen, elixir-format
 msgid "You need to be logged-in and a moderator to list reports"
-msgstr "За приказ листе извештаја мораш бити пријављен/а и бити модератор"
+msgstr "За приказ листе извештаја мораш бити пријављени и бити модератор"
 
 #: lib/graphql/resolvers/report.ex:121
 #, elixir-autogen, elixir-format
 msgid "You need to be logged-in and a moderator to update a report"
-msgstr "За ажурирање извештаја мораш бити пријављени/а и бити модератор"
+msgstr "За ажурирање извештаја морате бити пријављени и бити модератор"
 
 #: lib/graphql/resolvers/report.ex:53
 #, elixir-autogen, elixir-format
 msgid "You need to be logged-in and a moderator to view a report"
-msgstr "За приказ извештаја мораш бити пријављен/а и бити модератор"
+msgstr "За приказ извештаја морате бити пријављени и бити модератор"
 
 #: lib/graphql/resolvers/admin.ex:259
 #, elixir-autogen, elixir-format
 msgid "You need to be logged-in and an administrator to access admin settings"
 msgstr ""
-"За приступ администраторским подешавањима мораш бити пријављен/а и бити "
+"За приступ администраторским подешавањима морате бити пријављени и бити "
 "моderator"
 
 #: lib/graphql/resolvers/admin.ex:243
@@ -680,47 +680,47 @@ msgstr ""
 #: lib/graphql/resolvers/discussion.ex:84
 #, elixir-autogen, elixir-format
 msgid "You need to be logged-in to access discussions"
-msgstr "За приступ дискусији мораш бити пријављен/а"
+msgstr "За приступ дискусији морате бити пријављени"
 
 #: lib/graphql/resolvers/resource.ex:98
 #, elixir-autogen, elixir-format
 msgid "You need to be logged-in to access resources"
-msgstr "За приступ ресурсима мораш бити пријављен/а"
+msgstr "За приступ ресурсима морате бити пријављени"
 
 #: lib/graphql/resolvers/event.ex:321
 #, elixir-autogen, elixir-format
 msgid "You need to be logged-in to create events"
-msgstr "За креирање догађаја мораш бити пријављен/а"
+msgstr "За креирање догађаја морате бити пријављени"
 
 #: lib/graphql/resolvers/post.ex:141
 #, elixir-autogen, elixir-format
 msgid "You need to be logged-in to create posts"
-msgstr "За креирање објава мораш бити пријављен/а"
+msgstr "За креирање објава морате бити пријављени"
 
 #: lib/graphql/resolvers/report.ex:87
 #, elixir-autogen, elixir-format
 msgid "You need to be logged-in to create reports"
-msgstr "За креирање извјештаја мораш бити пријављен/а"
+msgstr "За креирање извјештаја морате бити пријављени"
 
 #: lib/graphql/resolvers/resource.ex:142
 #, elixir-autogen, elixir-format
 msgid "You need to be logged-in to create resources"
-msgstr "За креирање ресурса мораш бити пријављен/а"
+msgstr "За креирање ресурса морате бити пријављени"
 
 #: lib/graphql/resolvers/event.ex:439
 #, elixir-autogen, elixir-format
 msgid "You need to be logged-in to delete an event"
-msgstr "За брисање догађаја мораш бити пријављен/а"
+msgstr "За брисање догађаја морате бити пријављени"
 
 #: lib/graphql/resolvers/post.ex:214
 #, elixir-autogen, elixir-format
 msgid "You need to be logged-in to delete posts"
-msgstr "За брисање објава мораш бити пријављен/а"
+msgstr "За брисање објава морате бити пријављени"
 
 #: lib/graphql/resolvers/resource.ex:209
 #, elixir-autogen, elixir-format
 msgid "You need to be logged-in to delete resources"
-msgstr "За брисање ресурса мораш бити пријављен/а"
+msgstr "За брисање ресурса морате бити пријављени"
 
 #: lib/graphql/resolvers/participant.ex:110
 #, elixir-autogen, elixir-format
@@ -735,22 +735,22 @@ msgstr "Морате бити пријављени да бисте напуст�
 #: lib/graphql/resolvers/event.ex:396
 #, elixir-autogen, elixir-format
 msgid "You need to be logged-in to update an event"
-msgstr "За ажурирање догађаја мораш бити пријављен/а"
+msgstr "За ажурирање догађаја морате бити пријављени"
 
 #: lib/graphql/resolvers/post.ex:180
 #, elixir-autogen, elixir-format
 msgid "You need to be logged-in to update posts"
-msgstr "За ажурирање објава мораш бити пријављен/а"
+msgstr "За ажурирање објава морате бити пријављени"
 
 #: lib/graphql/resolvers/resource.ex:179
 #, elixir-autogen, elixir-format
 msgid "You need to be logged-in to update resources"
-msgstr "За ажурирање ресурса мораш бити пријављен/а"
+msgstr "За ажурирање ресурса морате бити пријављени"
 
 #: lib/graphql/resolvers/resource.ex:233
 #, elixir-autogen, elixir-format
 msgid "You need to be logged-in to view a resource preview"
-msgstr "За приказ прегледа ресурса мораш бити пријављен/а"
+msgstr "За приказ прегледа ресурса морате бити пријављени"
 
 #: lib/graphql/resolvers/resource.ex:134
 #, elixir-autogen, elixir-format
@@ -771,7 +771,7 @@ msgstr ""
 #: lib/mobilizon/users/user.ex:108
 #, elixir-autogen, elixir-format
 msgid "This email is already used."
-msgstr "Ова е-маил адресаi се већ користи."
+msgstr "Ова е-маил адреса се већ користи."
 
 #: lib/graphql/error.ex:113
 #, elixir-autogen, elixir-format
@@ -791,7 +791,7 @@ msgstr "Неважећи подаци за пријаву"
 #: lib/graphql/error.ex:104
 #, elixir-autogen, elixir-format
 msgid "Reset your password to login"
-msgstr "Ресетуј лозинку да би се пријавио/ла"
+msgstr "Ресетујте лозинку да бисте се пријавили"
 
 #: lib/graphql/error.ex:111
 #: lib/graphql/error.ex:116
@@ -812,12 +812,12 @@ msgstr "Непознат ресурс"
 #: lib/graphql/error.ex:109
 #, elixir-autogen, elixir-format
 msgid "You don't have permission to do this"
-msgstr "За ово немаш дозволу"
+msgstr "За ово немате дозволу"
 
 #: lib/graphql/error.ex:101
 #, elixir-autogen, elixir-format
 msgid "You need to be logged in"
-msgstr "Мораш бити пријављен/а"
+msgstr "Морате бити пријављени/a"
 
 #: lib/graphql/resolvers/member.ex:118
 #, elixir-autogen, elixir-format
@@ -1110,7 +1110,7 @@ msgstr "Нова улога мора бити другачија"
 #, elixir-autogen, elixir-format
 msgid "You need to be logged-in and an administrator to edit an user's details"
 msgstr ""
-"Morate biti prijavljeni i imati administratorska prava da biste izmenili korisničke podatke"
+"Морате бити пријављени и имати администраторска права да бисте изменили корисничке податке"
 
 #: lib/graphql/api/groups.ex:33
 #, elixir-autogen, elixir-format
@@ -1151,7 +1151,7 @@ msgstr "Неподржани статус за извештај"
 #: lib/graphql/api/reports.ex:127
 #, elixir-autogen, elixir-format
 msgid "You can only remove your own notes"
-msgstr "можете уклонити само своје белешке"
+msgstr "Можете уклонити само своје белешке"
 
 #: lib/graphql/api/reports.ex:94
 #: lib/graphql/api/reports.ex:121
@@ -1197,7 +1197,7 @@ msgstr "Немогуће је креирати апликацију."
 #: lib/web/controllers/application_controller.ex:353
 #, elixir-autogen, elixir-format
 msgid "Incorrect parameters sent. You need to provide at least the grant_type and client_id parameters, depending on the grant type being used."
-msgstr "Неисправни параметри послати. Потребно је навести барем грант_тyпе и client_id параметре, у зависности од коришћеног типа додељивања."
+msgstr "Неисправни параметри послати. Потребно је навести барем grant_type и client_id параметре, у зависности од коришћеног типа додељивања."
 
 #: lib/web/controllers/application_controller.ex:326
 #, elixir-autogen, elixir-format
@@ -1264,7 +1264,7 @@ msgstr "Прослеђени device_code је истекао"
 #: lib/graphql/resolvers/application.ex:45
 #, elixir-autogen, elixir-format
 msgid "The given redirect_uri is not in the list of allowed redirect URIs"
-msgstr "Прослеђени redirect_uri није на листи дозвољених редирецт УРИ"
+msgstr "Прослеђени redirect_uri није на листи дозвољених redirect URI"
 
 #: lib/web/controllers/application_controller.ex:155
 #, elixir-autogen, elixir-format
@@ -1291,7 +1291,7 @@ msgstr "Прослеђени client_id не одговара прослеђен�
 #: lib/web/controllers/application_controller.ex:411
 #, elixir-autogen, elixir-format
 msgid "The provided client_secret is invalid"
-msgstr "Прослеђени цлиент_сецрет је неважећи"
+msgstr "Прослеђени client_secret је неважећи"
 
 #: lib/web/controllers/application_controller.ex:404
 #, elixir-autogen, elixir-format
@@ -1316,7 +1316,7 @@ msgstr "Корисник је одбио тражену ауторизацију
 #: lib/web/controllers/application_controller.ex:401
 #, elixir-autogen, elixir-format
 msgid "This redirect URI is not allowed"
-msgstr "Овај редирецт УРИ није дозвољен"
+msgstr "Овај redirect URI није дозвољен"
 
 #: lib/web/controllers/application_controller.ex:378
 #, elixir-autogen, elixir-format, fuzzy
@@ -1341,17 +1341,17 @@ msgstr "Немогуће је опозвати токен"
 #: lib/web/controllers/application_controller.ex:195
 #, elixir-autogen, elixir-format
 msgid "You need to pass both client_id and scope as parameters to obtain a device code"
-msgstr "Мораш проследити и client_id и scope као параметре да би добио/ла device code"
+msgstr "Морате проследити и client_id и scope као параметре да би добили device code"
 
 #: lib/web/controllers/application_controller.ex:133
 #, elixir-autogen, elixir-format
 msgid "You need to provide a valid redirect_uri to autorize an application"
-msgstr "Мораш проследити важећи redirect_uri да би ауторизовао/ла апликацију"
+msgstr "Морате проследити важећи redirect_uri да би ауторизовали апликацију"
 
 #: lib/web/controllers/application_controller.ex:123
 #, elixir-autogen, elixir-format
 msgid "You need to specify client_id, redirect_uri, scope and state to autorize an application"
-msgstr "Мораш проследити client_id, redirect_uri, scope и state да би ауторизовао/ла апликацију"
+msgstr "Мораш проследити client_id, redirect_uri, scope и state да би ауторизовали апликацију"
 
 #: lib/graphql/resolvers/user.ex:306
 #, elixir-autogen, elixir-format
@@ -1377,7 +1377,7 @@ msgstr "Није дозвољено пружање спољне регистра
 #: lib/graphql/resolvers/push_subscription.ex:48
 #, elixir-autogen, elixir-format
 msgid "The same push subscription has already been registered"
-msgstr "Иста пусх претплата је већ регистрована"
+msgstr "Иста push претплата је већ регистрована"
 
 #: lib/graphql/resolvers/admin.ex:554
 #, elixir-autogen, elixir-format
@@ -1387,12 +1387,12 @@ msgstr "Ова инстанца чека одобрење за праћење"
 #: lib/graphql/schema/custom/timezone.ex:25
 #, elixir-autogen, elixir-format
 msgid "Timezone ID %{timezone} is invalid"
-msgstr "ИД временске зоне %{тимезоне} је неважећи"
+msgstr "ИД временске зоне %{timezone} је неважећи"
 
 #: lib/graphql/resolvers/admin.ex:557
 #, elixir-autogen, elixir-format, fuzzy
 msgid "You are already following this instance"
-msgstr "Већ пратиш ову инстанцу"
+msgstr "Већ пратите ову инстанцу"
 
 #: lib/graphql/resolvers/user.ex:310
 #, elixir-autogen, elixir-format, fuzzy
@@ -1407,12 +1407,12 @@ msgstr "Поновни захтев за ресетовање лозинке с�
 #: lib/graphql/resolvers/user.ex:368
 #, elixir-autogen, elixir-format
 msgid "The token you provided is invalid. Make sure that the URL is exactly the one provided inside the email you got."
-msgstr "Токен који сте проследили је неважећи. Уверите се да је УРЛ тачно онај који сте добили у е-маилу."
+msgstr "Токен који сте проследили је неважећи. Уверите се да је URL тачно онај који сте добили у е-маилу."
 
 #: lib/graphql/resolvers/conversation.ex:164
 #, elixir-autogen, elixir-format
 msgid "Conversation needs to mention at least one participant that's not yourself"
-msgstr "Конверзација треба споменути барем једног учесника који ниси ти"
+msgstr "Конверзација треба споменути барем једног учесника који нисте ви"
 
 #: lib/graphql/resolvers/participant.ex:401
 #, elixir-autogen, elixir-format

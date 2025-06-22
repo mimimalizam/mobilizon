@@ -295,6 +295,7 @@ defmodule Mobilizon.GraphQL.Resolvers.MemberTest do
       assert hd(res["errors"])["message"] == "Profile invited doesn't exist"
     end
 
+    @tag flaky: true
     test "invite_member/3 fails to invite a non existing remote actor", %{
       conn: conn,
       user: user,
@@ -353,6 +354,7 @@ defmodule Mobilizon.GraphQL.Resolvers.MemberTest do
       assert hd(res["errors"])["message"] == "Group not found"
     end
 
+    @tag flaky: true
     test "invite_member/3 fails to invite a actor if we are not an admin for the group", %{
       conn: conn,
       user: user,

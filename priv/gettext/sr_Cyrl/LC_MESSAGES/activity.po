@@ -495,27 +495,27 @@ msgstr "%{profile} је објавио/ла јавну најаву за дог�
 #: lib/web/templates/email/activity/_conversation_activity_item.html.heex:3
 #, elixir-autogen, elixir-format
 msgid "%{profile} mentionned you in a %{conversation}."
-msgstr "%{profile} те је споменуо/ла у конверзацији %{conversation}."
+msgstr "%{profile} вас је споменуо/ла у конверзацији %{conversation}."
 
 #: lib/web/templates/email/activity/_conversation_activity_item.text.eex:1
 #, elixir-autogen, elixir-format
 msgid "%{profile} mentionned you in a conversation."
-msgstr "%{profile} те је споменуо/ла у једној конверзацији."
+msgstr "%{profile} вас је споменуо/ла у једној конверзацији."
 
 #: lib/service/activity/renderer/conversation.ex:36
 #, elixir-autogen, elixir-format
 msgid "%{profile} replied to your message"
-msgstr "%{profile} је одговорио/ла на твоју поруку"
+msgstr "%{profile} вас одговорио/ла на твоју поруку"
 
 #: lib/web/templates/email/activity/_conversation_activity_item.html.heex:10
 #, elixir-autogen, elixir-format
 msgid "%{profile} replied you in a %{conversation}."
-msgstr "%{profile} ти је одговорио/ла у једној %{conversation}."
+msgstr "%{profile} вам је одговорио/ла у једној %{conversation}."
 
 #: lib/web/templates/email/activity/_conversation_activity_item.text.eex:6
 #, elixir-autogen, elixir-format
 msgid "%{profile} replied you in a conversation."
-msgstr "%{profile} ти је одговорио/ла у једној конверзацији."
+msgstr "%{profile} вам је одговорио/ла у једној конверзацији."
 
 #: lib/service/activity/renderer/conversation.ex:49
 #, elixir-autogen, elixir-format
@@ -525,7 +525,7 @@ msgstr "%{profile} је послао/ла приватну поруку о до�
 #: lib/service/activity/renderer/conversation.ex:23
 #, elixir-autogen, elixir-format
 msgid "%{profile} sent you a message"
-msgstr "%{profile} ти је послао/ла поруку"
+msgstr "%{profile} вам је послао/ла поруку"
 
 #: lib/web/email/activity.ex:52
 #, elixir-autogen, elixir-format
