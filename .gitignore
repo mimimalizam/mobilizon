@@ -57,3 +57,5 @@ stats.html
 /playwright-report/
 .histoire
 
+.venv/
+

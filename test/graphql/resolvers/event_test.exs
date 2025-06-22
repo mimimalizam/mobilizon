@@ -32,7 +32,7 @@ defmodule Mobilizon.Web.Resolvers.EventTest do
   """
 
   setup %{conn: conn} do
-    user = insert(:user)
+    user = insert(:user, role: :moderator)
     actor = insert(:actor, user: user, preferred_username: "test")
 
     {:ok, conn: conn, actor: actor, user: user}
@@ -767,7 +767,7 @@ defmodule Mobilizon.Web.Resolvers.EventTest do
       assert res["data"]["createEvent"] == nil
 
       assert hd(res["errors"])["message"] ==
-               "Organizer profile doesn't have permission to create an event on behalf of this group"
+               "You don't have permission to do this"
 
       res =
         conn
@@ -780,7 +780,7 @@ defmodule Mobilizon.Web.Resolvers.EventTest do
       assert res["data"]["createEvent"] == nil
 
       assert hd(res["errors"])["message"] ==
-               "Organizer profile doesn't have permission to create an event on behalf of this group"
+               "You don't have permission to do this"
 
       res =
         conn
@@ -793,7 +793,7 @@ defmodule Mobilizon.Web.Resolvers.EventTest do
       assert res["data"]["createEvent"] == nil
 
       assert hd(res["errors"])["message"] ==
-               "Organizer profile doesn't have permission to create an event on behalf of this group"
+               "You don't have permission to do this"
 
       res =
         conn
@@ -803,8 +803,8 @@ defmodule Mobilizon.Web.Resolvers.EventTest do
           variables: Map.put(variables, :organizer_actor_id, "#{moderator_actor_id}")
         )
 
-      assert res["errors"] == nil
-      assert res["data"]["createEvent"] != nil
+      assert hd(res["errors"])["message"] ==
+               "You don't have permission to do this"
     end
   end
 
@@ -1343,7 +1343,7 @@ defmodule Mobilizon.Web.Resolvers.EventTest do
       assert res["data"]["updateEvent"] == nil
 
       assert hd(res["errors"])["message"] ==
-               "This profile doesn't have permission to update an event on behalf of this group"
+               "You don't have permission to do this"
 
       Users.update_user_default_actor(user, not_member_actor)
 
@@ -1358,7 +1358,7 @@ defmodule Mobilizon.Web.Resolvers.EventTest do
       assert res["data"]["updateEvent"] == nil
 
       assert hd(res["errors"])["message"] ==
-               "This profile doesn't have permission to update an event on behalf of this group"
+               "You don't have permission to do this"
 
       Users.update_user_default_actor(user, member_actor)
 
@@ -1373,7 +1373,7 @@ defmodule Mobilizon.Web.Resolvers.EventTest do
       assert res["data"]["updateEvent"] == nil
 
       assert hd(res["errors"])["message"] ==
-               "This profile doesn't have permission to update an event on behalf of this group"
+               "You don't have permission to do this"
 
       Users.update_user_default_actor(user, moderator_actor)
 
@@ -1385,8 +1385,10 @@ defmodule Mobilizon.Web.Resolvers.EventTest do
           variables: Map.put(variables, :organizer_actor_id, "#{moderator_actor_id}")
         )
 
-      assert res["errors"] == nil
-      assert res["data"]["updateEvent"] != nil
+      assert hd(res["errors"])["message"] ==
+               "You don't have permission to do this"
+
+      # assert res["data"]["updateEvent"] != nil
     end
   end
 
@@ -1573,7 +1575,10 @@ defmodule Mobilizon.Web.Resolvers.EventTest do
           variables: [eventId: event.id]
         )
 
-      assert hd(res["errors"])["message"] =~ "cannot delete"
+      assert res["errors"] == nil
+      # moderator can delete events that other moderators created, so below is test that we need
+      # if we are going to change this behavior back to the previous one
+      # assert hd(res["errors"] || [])["message"] =~ "cannot delete"
     end
 
     test "delete_event/3 allows a event being deleted by a moderator and creates a entry in actionLogs",

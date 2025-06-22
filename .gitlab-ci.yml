@@ -122,12 +122,11 @@ exunit_internal:
       alias: postgres
   variables:
     MIX_ENV: test
+    MOBILIZON_DATABASE_DBNAME: mobilizon_test
+    MOBILIZON_INSTANCE_HOST: mobilizon.test
   before_script:
     - mix deps.get
-    - mix compile
-    - mix tz_world.update
-    - mix ecto.create
-    - mix ecto.migrate
+    - mix prepare_test
   script:
     - mix coveralls --exclude external:true
   artifacts:
@@ -146,14 +145,14 @@ exunit_external:
       alias: postgres
   variables:
     MIX_ENV: test
+    MOBILIZON_DATABASE_DBNAME: mobilizon_test
+    MOBILIZON_INSTANCE_HOST: mobilizon.test
   needs:
     - exunit_internal
   before_script:
     - mix deps.get
-    - mix compile
-    - mix tz_world.update
-    - mix ecto.create
-    - mix ecto.migrate
+    - mix deps.get
+    - mix prepare_test
   script:
     - mix coveralls --only external:true
   artifacts:
