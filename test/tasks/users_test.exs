@@ -209,6 +209,7 @@ defmodule Mix.Tasks.Mobilizon.UsersTest do
   end
 
   describe "show user" do
+    @tag flaky: true
     test "show existing user" do
       %User{confirmed_at: confirmed_at, role: role} = user = insert(:user, email: @email)
 

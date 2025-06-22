@@ -442,7 +442,7 @@ defmodule Mobilizon.GraphQL.Resolvers.UserTest do
       Config.put([:instance, :registration_email_allowlist], [])
     end
 
-    @tag external: true
+    @tag flaky: true
     test "create_user/3 allows registration when user email domain is on the allowlist", %{
       conn: conn
     } do

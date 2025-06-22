@@ -13,7 +13,7 @@ defmodule Mobilizon.Federation.ActivityPub.ActorTest do
   alias Mobilizon.Service.HTTP.WebfingerClient.Mock, as: WebfingerClientMock
 
   describe "fetching actor from its url" do
-    @tag external: true
+    @tag flaky: true
     @actor_url "https://framapiaf.org/users/tcit"
     test "returns an actor from nickname" do
       actor_data =
@@ -55,7 +55,7 @@ defmodule Mobilizon.Federation.ActivityPub.ActorTest do
                 _actor} = ActivityPubActor.make_actor_from_nickname("tcit@framapiaf.org")
     end
 
-    @tag external: true
+    @tag flaky: true
     test "returns an actor from nickname when not discoverable" do
       actor_data =
         File.read!("test/fixtures/mastodon-actor.json")
@@ -188,7 +188,7 @@ defmodule Mobilizon.Federation.ActivityPub.ActorTest do
              )
     end
 
-    @tag external: true
+    @tag flaky: true
     @public_url "https://www.w3.org/ns/activitystreams#Public"
     test "activitystreams#Public uri returns Relay actor" do
       assert ActivityPubActor.get_or_fetch_actor_by_url(@public_url) == {:ok, Relay.get_actor()}

@@ -115,7 +115,7 @@ deps:
   tags:
     - nikola
 
-exunit_internal:
+exunit:
   stage: test
   services:
     - name: postgis/postgis:16-3.4
@@ -128,7 +128,7 @@ exunit_internal:
     - mix deps.get
     - mix prepare_test
   script:
-    - mix coveralls --exclude external:true
+    - mix coveralls --exclude flaky:true
   artifacts:
     when: always
     reports:
@@ -138,7 +138,7 @@ exunit_internal:
   tags:
     - nikola
 
-exunit_external:
+exunit_flaky_tests:
   stage: test
   services:
     - name: postgis/postgis:16-3.4
@@ -154,7 +154,7 @@ exunit_external:
     - mix deps.get
     - mix prepare_test
   script:
-    - mix coveralls --only external:true
+    - mix coveralls --only flaky:true
   artifacts:
     when: always
     reports:
