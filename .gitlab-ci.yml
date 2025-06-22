@@ -148,7 +148,7 @@ exunit_flaky_tests:
     MOBILIZON_DATABASE_DBNAME: mobilizon_test
     MOBILIZON_INSTANCE_HOST: mobilizon.test
   needs:
-    - exunit_internal
+    - exunit
   before_script:
     - mix deps.get
     - mix deps.get
