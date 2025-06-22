@@ -53,6 +53,7 @@ msgstr "su još uvek povezani s ovim unosom"
 
 # From Ecto.Changeset.validate_length/3
 msgid "should be %{count} character(s)"
+msgid_plural "should be %{count} character(s)"
 msgstr[0] "trebao bi biti %{count} znak"
 msgstr[1] "trebalo bi biti %{count} znaka"
 msgstr[2] "trebalo bi biti %{count} znakova"
