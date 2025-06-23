@@ -1271,6 +1271,7 @@
     "Your account has been validated": "Ваш налог је потврђен",
     "Your account is being validated": "У току је потврда вашег налога",
     "Your account is nearly ready, {username}": "Ваш налог је скоро спреман, {username}",
+    "Your account is nearly ready": "Ваш налог је скоро спреман",
     "Your current email is {email}. You use it to log in.": "Ваша тренутна е-пошта је {email}. Користите је за пријаву.",
     "Your email has been changed": "Ваша е-пошта је промењена",
     "Your email is being changed": "У току је промена ваше е-поште",
