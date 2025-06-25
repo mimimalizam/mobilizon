@@ -108,7 +108,7 @@
     "You can put any arbitrary content in this element. URLs will be clickable.": "У овај елемент можете поставити произвољан садржај. URL-ови ће бити кликабилни.",
     "You can try another search term or add the address details manually below.": "Можете покушати са другим појмом за претрагу или ручно додати податке о адреси испод.",
     "Manually enter address": "Ручно унесите адресу",
-    "You can drag and drop the marker below to the desired location": "Маркер испод можете превуши на жељену локацију",
+    "You can drag and drop the marker below to the desired location": "Маркер испод можете превући на жељену локацију",
     "This application didn't ask for known permissions. It's likely the request is incorrect.": "Ова апликација није затражила познате дозволе. Вероватно је захтев нетачан.",
     "This application asks for the following permissions:": "Ова апликација захтева следеће дозволе:",
     "This application will be allowed to see all of your events organized, the events you participate to, as well as every data from your groups.": "Ова апликација ће имати приступ свим догађајима које организујете, догађајима у којима учествујете, као и свим подацима из ваших група.",
@@ -1412,8 +1412,8 @@
     "Resolved": "Решено",
     "Resource provided is not an URL": "Приложени садржај није URL",
     "Role": "Улога",
-    "Save draft": "Сачувајте нацрт",
-    "Save": "Сачувајте",
+    "Save draft": "Сачувај нацрт",
+    "Save": "Сачувај",
     "Search events, groups, etc.": "Претражите догађаје, групе итд.",
     "Search": "Претражи",
     "Searching…": "Претражује се…",
@@ -1668,8 +1668,9 @@
     "Change my identity…": "Промени мој идентитет…",
     "Change my password": "Промени моју лозинку",
     "Change": "Промени",
-    "Clear": "Очисти",
+    "Clear": "Поништи",
     "Click to upload": "Кликните за отпремање",
     "Activities": "Активности",
-    "View more events and activities": "Погледајте више догађаја и активности"
+    "View more events and activities": "Погледајте више догађаја и активности",
+    "Activities are disabled on this instance.|An event with a duration of more than one day will be categorized as an activity.|An event with a duration of more than {number} days will be categorized as an activity.": "Активности су онемогућене на овој инстанци.|Догађај са трајањем дужим од једног дана ће бити класификован као активност.|Догађај са трајањем дужим од {number} дана ће бити класификован као активност."
 }
