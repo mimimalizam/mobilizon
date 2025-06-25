@@ -65,7 +65,10 @@ config :mobilizon, :instance,
   enable_instance_feeds:
     System.get_env("MOBILIZON_INSTANCE_ENABLE_INSTANCE_FEEDS", "true") == "true",
   email_from: System.get_env("MOBILIZON_INSTANCE_EMAIL", "noreply@mobilizon.lan"),
-  email_reply_to: System.get_env("MOBILIZON_REPLY_EMAIL", "noreply@mobilizon.lan")
+  email_reply_to: System.get_env("MOBILIZON_REPLY_EMAIL", "noreply@mobilizon.lan"),
+  excluded_categories:
+    System.get_env("MOBILIZON_EXCLUDED_CATEGORIES", "")
+    |> String.split(",", trim: true)
 
 config :mobilizon, Mobilizon.Storage.Repo,
   adapter: Ecto.Adapters.Postgres,

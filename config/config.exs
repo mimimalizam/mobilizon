@@ -39,7 +39,8 @@ config :mobilizon, :instance,
   duration_of_long_event: 30,
   enable_instance_feeds: true,
   email_from: "noreply@localhost",
-  email_reply_to: "noreply@localhost"
+  email_reply_to: "noreply@localhost",
+  excluded_categories: []
 
 config :mobilizon, :groups, enabled: true
 

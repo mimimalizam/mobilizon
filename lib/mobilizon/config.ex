@@ -350,6 +350,11 @@ defmodule Mobilizon.Config do
     }
   end
 
+  @spec instance_excluded_categories :: list(String.t())
+  def instance_excluded_categories do
+    get([:instance, :excluded_categories], [])
+  end
+
   @spec only_admin_can_create_groups? :: boolean
   def only_admin_can_create_groups?,
     do:
