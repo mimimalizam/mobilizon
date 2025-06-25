@@ -3,8 +3,139 @@ defmodule Mobilizon.Events.Categories do
   Module that handles event categories
   """
   import Mobilizon.Web.Gettext
+  alias Mobilizon.Config
 
   @default "MEETING"
+
+  @build_in_categories [
+                         %{
+                           id: :arts,
+                           label: gettext("Arts")
+                         },
+                         %{
+                           id: :book_clubs,
+                           label: gettext("Book clubs")
+                         },
+                         %{
+                           id: :business,
+                           label: gettext("Business")
+                         },
+                         %{
+                           id: :causes,
+                           label: gettext("Causes")
+                         },
+                         %{
+                           id: :comedy,
+                           label: gettext("Comedy")
+                         },
+                         %{
+                           id: :crafts,
+                           label: gettext("Crafts")
+                         },
+                         %{
+                           id: :food_drink,
+                           label: gettext("Food & Drink")
+                         },
+                         %{
+                           id: :health,
+                           label: gettext("Health")
+                         },
+                         %{
+                           id: :music,
+                           label: gettext("Music")
+                         },
+                         %{
+                           id: :auto_boat_air,
+                           label: gettext("Auto, boat and air")
+                         },
+                         %{
+                           id: :community,
+                           label: gettext("Community")
+                         },
+                         %{
+                           id: :family_education,
+                           label: gettext("Family & Education")
+                         },
+                         %{
+                           id: :fashion_beauty,
+                           label: gettext("Fashion & Beauty")
+                         },
+                         %{
+                           id: :film_media,
+                           label: gettext("Film & Media")
+                         },
+                         %{
+                           id: :games,
+                           label: gettext("Games")
+                         },
+                         %{
+                           id: :language_culture,
+                           label: gettext("Language & Culture")
+                         },
+                         %{
+                           id: :learning,
+                           label: gettext("Learning")
+                         },
+                         %{
+                           id: :lgbtq,
+                           label: gettext("LGBTQ")
+                         },
+                         %{
+                           id: :movements_politics,
+                           label: gettext("Movements and politics")
+                         },
+                         %{
+                           id: :networking,
+                           label: gettext("Networking")
+                         },
+                         %{
+                           id: :party,
+                           label: gettext("Party")
+                         },
+                         %{
+                           id: :performing_visual_arts,
+                           label: gettext("Performing & Visual Arts")
+                         },
+                         %{
+                           id: :pets,
+                           label: gettext("Pets")
+                         },
+                         %{
+                           id: :photography,
+                           label: gettext("Photography")
+                         },
+                         %{
+                           id: :outdoors_adventure,
+                           label: gettext("Outdoors & Adventure")
+                         },
+                         %{
+                           id: :spirituality_religion_beliefs,
+                           label: gettext("Spirituality, Religion & Beliefs")
+                         },
+                         %{
+                           id: :science_tech,
+                           label: gettext("Science & Tech")
+                         },
+                         %{
+                           id: :sports,
+                           label: gettext("Sports")
+                         },
+                         %{
+                           id: :theatre,
+                           label: gettext("Theatre")
+                         },
+                         # Legacy default value
+                         %{
+                           id: :meeting,
+                           label: gettext("Meeting")
+                         }
+                       ]
+                       |> Enum.filter(fn category ->
+                         to_string(category.id) not in Enum.map(
+                           Config.instance_excluded_categories(),
+                           &String.downcase(to_string(&1))
+                         )
+                       end)
 
   @spec default :: String.t()
   def default do
@@ -25,131 +156,7 @@ defmodule Mobilizon.Events.Categories do
     end
   end
 
-  defp build_in_categories do
-    [
-      %{
-        id: :arts,
-        label: gettext("Arts")
-      },
-      %{
-        id: :book_clubs,
-        label: gettext("Book clubs")
-      },
-      %{
-        id: :business,
-        label: gettext("Business")
-      },
-      %{
-        id: :causes,
-        label: gettext("Causes")
-      },
-      %{
-        id: :comedy,
-        label: gettext("Comedy")
-      },
-      %{
-        id: :crafts,
-        label: gettext("Crafts")
-      },
-      %{
-        id: :food_drink,
-        label: gettext("Food & Drink")
-      },
-      %{
-        id: :health,
-        label: gettext("Health")
-      },
-      %{
-        id: :music,
-        label: gettext("Music")
-      },
-      %{
-        id: :auto_boat_air,
-        label: gettext("Auto, boat and air")
-      },
-      %{
-        id: :community,
-        label: gettext("Community")
-      },
-      %{
-        id: :family_education,
-        label: gettext("Family & Education")
-      },
-      %{
-        id: :fashion_beauty,
-        label: gettext("Fashion & Beauty")
-      },
-      %{
-        id: :film_media,
-        label: gettext("Film & Media")
-      },
-      %{
-        id: :games,
-        label: gettext("Games")
-      },
-      %{
-        id: :language_culture,
-        label: gettext("Language & Culture")
-      },
-      %{
-        id: :learning,
-        label: gettext("Learning")
-      },
-      %{
-        id: :lgbtq,
-        label: gettext("LGBTQ")
-      },
-      %{
-        id: :movements_politics,
-        label: gettext("Movements and politics")
-      },
-      %{
-        id: :networking,
-        label: gettext("Networking")
-      },
-      %{
-        id: :party,
-        label: gettext("Party")
-      },
-      %{
-        id: :performing_visual_arts,
-        label: gettext("Performing & Visual Arts")
-      },
-      %{
-        id: :pets,
-        label: gettext("Pets")
-      },
-      %{
-        id: :photography,
-        label: gettext("Photography")
-      },
-      %{
-        id: :outdoors_adventure,
-        label: gettext("Outdoors & Adventure")
-      },
-      %{
-        id: :spirituality_religion_beliefs,
-        label: gettext("Spirituality, Religion & Beliefs")
-      },
-      %{
-        id: :science_tech,
-        label: gettext("Science & Tech")
-      },
-      %{
-        id: :sports,
-        label: gettext("Sports")
-      },
-      %{
-        id: :theatre,
-        label: gettext("Theatre")
-      },
-      # Legacy default value
-      %{
-        id: :meeting,
-        label: gettext("Meeting")
-      }
-    ]
-  end
+  defp build_in_categories, do: @build_in_categories
 
   @spec extra_categories :: [%{id: atom(), label: String.t()}]
   defp extra_categories do
