@@ -66,7 +66,7 @@ RUN mkdir -p /etc/mobilizon && chown nobody:nobody /etc/mobilizon
 USER nobody
 
 # Get timezone geodata
-RUN curl -L 'https://packages.joinmobilizon.org/tz_world/timezones-geodata.dets' -o /var/lib/mobilizon/timezones/timezones-geodata.dets
+RUN curl -L 'http://192.168.2.6:8080/api/public/dl/q47D_uko' -o /var/lib/mobilizon/timezones/timezones-geodata.dets
 
 EXPOSE 4000
 
