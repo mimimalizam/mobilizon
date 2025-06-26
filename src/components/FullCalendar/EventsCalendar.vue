@@ -84,7 +84,7 @@ const calendarOptions = computed((): object => {
       center: "title",
       right: "dayGridWeek,dayGridMonth", // user can switch between the two
     },
-    locale: locale,
+    locale: locale.replace(/_/g, '-'), // Convert underscores to hyphens
     firstDay: 1,
     buttonText: {
       today: t("Today"),
