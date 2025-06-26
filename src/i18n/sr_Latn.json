@@ -1679,5 +1679,6 @@
   "No events found nearby {position}. Try removing your position to see all events!": "Nisu pronađeni događaji u blizini {position}. Pokušajte da uklonite vašu lokaciju da biste videli sve događaje!",
   "Timezone parameters": "Parametri vremenske zone",
   "Hide the number of participants": "Sakrij broj učesnika",
-  "Showing participants": "Prikaz učesnika"
+  "Showing participants": "Prikaz učesnika",
+  "How to register": "Kako se registrovati"
 }
