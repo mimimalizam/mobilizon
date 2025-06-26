@@ -1673,11 +1673,12 @@
     "View more events and activities": "Погледајте више догађаја и активности",
     "Activities are disabled on this instance.|An event with a duration of more than one day will be categorized as an activity.|An event with a duration of more than {number} days will be categorized as an activity.": "Активности су онемогућене на овој инстанци.|Догађај са трајањем дужим од једног дана ће бити класификован као активност.|Догађај са трајањем дужим од {number} дана ће бити класификован као активност.",
     "Last event activity": "Последња активност догађаја",
-    "Decreasing number of members": "По броју чланова",
-    "Decreasing creation date": "По датуму креирања",
+    "Decreasing number of members": "По броју чланова опадајуће",
+    "Decreasing creation date": "По датуму креирања опадајуће",
     "No events found nearby {position}. Try removing your position to see all events!": "Нису пронађени догађаји у близини {position}. Покушајте да уклоните своју локацију да бисте видели све догађаје!",
     "Timezone parameters": "Параметри временске зоне",
     "Hide the number of participants": "Сакриј број учесника",
     "Showing participants": "Приказ учесникa",
-    "How to register": "Како се регистровати"
+    "How to register": "Како се регистровати",
+    "I want to manage the registration on Mobilizon": "Желим да управљам регистрацијом на инстанци"
 }
