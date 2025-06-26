@@ -689,8 +689,7 @@
     "Comment text can't be empty": "Текст коментара не може бити празан",
     "Notifications": "Обавештења",
     "Profile feeds": "Фидови профила",
-    "These feeds contain event data for the events for which this specific profile is a participant or creator.You should keep these private.You can find feeds for all of your profiles into your notification settings.": "Ови фидови садрже податке о догађајима у којима је овај профил учесник или организатор. Препоручује се да ово остане приватно. Можете пронаћи фидове за све ваше профиле у подешавањима обавештења.",
-    "These feeds contain event data for the events for which this specific profile is a participant or creator. You should keep these private.You can find feeds for all of your profiles into your notification settings.": "Ови фидови садрже податке о догађајима у којима је овај профил учесник или организатор. Препоручује се да ово остане приватно. Можете пронаћи фидове за све ваше профиле у подешавањима обавештења.",
+    "These feeds contain event data for the events for which this specific profile is a participant or creator. You should keep these private. You can find feeds for all of your profiles into your notification settings.": "Ови фидови садрже податке о догађајима у којима је овај профил учесник или организатор. Препоручује се да ово остане приватно. Можете пронаћи фидове за све ваше профиле у подешавањима обавештења.",
     "Regenerate new links": "Поново генеришите нове линкове",
     "Create new links": "Направите нове линкове",
     "You'll need to change the URLs where there were previously entered.": "Мораћете да промените -ове где су раније унети.",
@@ -973,7 +972,7 @@
     "View all posts": "Погледајте све објаве",
     "Didn't receive the instructions?": "Нисте примили упутства?",
     "Allow all comments from users with accounts": "Дозволите све коментаре од корисника са налогом",
-    "This identifier is unique to your profile. It allows others to find you.": "Овај идентификатор је јединствен за ваш профил. Омогућава другима да вас пронађу.",
+    "This identifier is unique to your profile. It allows others to find you.": "Ова идентификација је јединствена за ваш профил. Омогућава другима да вас пронађу.",
     "Displayed nickname": "Приказан надимак",
     "Short bio": "Кратка биографија",
     "Federated Group Name": "Име федеративне групе",
@@ -1672,5 +1671,12 @@
     "Click to upload": "Кликните за отпремање",
     "Activities": "Активности",
     "View more events and activities": "Погледајте више догађаја и активности",
-    "Activities are disabled on this instance.|An event with a duration of more than one day will be categorized as an activity.|An event with a duration of more than {number} days will be categorized as an activity.": "Активности су онемогућене на овој инстанци.|Догађај са трајањем дужим од једног дана ће бити класификован као активност.|Догађај са трајањем дужим од {number} дана ће бити класификован као активност."
+    "Activities are disabled on this instance.|An event with a duration of more than one day will be categorized as an activity.|An event with a duration of more than {number} days will be categorized as an activity.": "Активности су онемогућене на овој инстанци.|Догађај са трајањем дужим од једног дана ће бити класификован као активност.|Догађај са трајањем дужим од {number} дана ће бити класификован као активност.",
+    "Last event activity": "Последња активност догађаја",
+    "Decreasing number of members": "По броју чланова",
+    "Decreasing creation date": "По датуму креирања",
+    "No events found nearby {position}. Try removing your position to see all events!": "Нису пронађени догађаји у близини {position}. Покушајте да уклоните своју локацију да бисте видели све догађаје!",
+    "Timezone parameters": "Параметри временске зоне",
+    "Hide the number of participants": "Сакриј број учесника",
+    "Showing participants": "Приказ учесникa"
 }
