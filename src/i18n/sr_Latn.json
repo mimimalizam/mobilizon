@@ -973,7 +973,7 @@
   "View all posts": "Pogledajte sve objave",
   "Didn't receive the instructions?": "Niste primili uputstva?",
   "Allow all comments from users with accounts": "Dozvolite sve komentare od korisnika sa nalogom",
-  "This identifier is unique to your profile. It allows others to find you.": "Ovaj identifikator je jedinstven za vaš profil. Omogućava drugima da vas pronađu.",
+  "This identifier is unique to your profile. It allows others to find you.": "Ova identifikacija je jedinstvena za vaš profil. Omogućava drugima da vas pronađu.",
   "Displayed nickname": "Prikazan nadimak",
   "Short bio": "Kratka biografija",
   "Federated Group Name": "Ime federativne grupe",
@@ -1672,5 +1672,12 @@
   "Click to upload": "Kliknite za otpremanje",
   "Activities": "Aktivnosti",
   "View more events and activities": "Pogledajte više događaja i aktivnosti",
-  "Activities are disabled on this instance.|An event with a duration of more than one day will be categorized as an activity.|An event with a duration of more than {number} days will be categorized as an activity.": "Aktivnosti su onemogućene na ovoj instanci.|Događaj sa trajanjem dužim od jednog dana će biti klasifikovan kao aktivnost.|Događaj sa trajanjem dužim od {number} dana će biti klasifikovan kao aktivnost."
+  "Activities are disabled on this instance.|An event with a duration of more than one day will be categorized as an activity.|An event with a duration of more than {number} days will be categorized as an activity.": "Aktivnosti su onemogućene na ovoj instanci.|Događaj sa trajanjem dužim od jednog dana će biti klasifikovan kao aktivnost.|Događaj sa trajanjem dužim od {number} dana će biti klasifikovan kao aktivnost.",
+  "Last event activity": "Poslednja aktivnost događaja",
+  "Decreasing number of members": "Po broju članova opadajuće",
+  "Decreasing creation date": "Po datumu kreiranja opadajuće",
+  "No events found nearby {position}. Try removing your position to see all events!": "Nisu pronađeni događaji u blizini {position}. Pokušajte da uklonite vašu lokaciju da biste videli sve događaje!",
+  "Timezone parameters": "Parametri vremenske zone",
+  "Hide the number of participants": "Sakrij broj učesnika",
+  "Showing participants": "Prikaz učesnika"
 }
