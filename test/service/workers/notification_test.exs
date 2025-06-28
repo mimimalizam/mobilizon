@@ -76,6 +76,7 @@ defmodule Mobilizon.Service.Workers.NotificationTest do
   end
 
   describe "A on_day_notification job sends an email" do
+    @tag flaky: true
     test "if the user is still participating" do
       %User{id: user_id} = user = insert(:user)
 
@@ -139,6 +140,7 @@ defmodule Mobilizon.Service.Workers.NotificationTest do
       refute_email_sent()
     end
 
+    @tag flaky: true
     test "with a lot of events" do
       %User{id: user_id} = user = insert(:user, email: @email)
 
@@ -162,6 +164,7 @@ defmodule Mobilizon.Service.Workers.NotificationTest do
   end
 
   describe "A weekly_notification job sends an email" do
+    @tag flaky: true
     test "if the user is still participating" do
       %User{id: user_id} = user = insert(:user)
 
@@ -237,6 +240,7 @@ defmodule Mobilizon.Service.Workers.NotificationTest do
       refute_email_sent()
     end
 
+    @tag flaky: true
     test "with a lot of events" do
       %User{id: user_id} = user = insert(:user, email: @email)
 
