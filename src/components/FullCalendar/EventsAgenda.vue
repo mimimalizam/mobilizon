@@ -144,7 +144,7 @@ const calendarOptions = computed((): object => {
       center: "",
       right: "title",
     },
-    locale: locale,
+    locale: locale.replace(/_/g, "-"), // Convert underscores to hyphens
     firstDay: 1,
     buttonText: {
       today: t("Today"),
