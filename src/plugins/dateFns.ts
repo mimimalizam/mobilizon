@@ -6,6 +6,8 @@ export const dateFnsPlugin = {
     function dateFnsfileForLanguage(lang: string) {
       const matches: Record<string, string> = {
         en: "en-US",
+        sr_Cyrl: "sr",
+        sr_Latn: "sr-Latn",
       };
       return matches[lang] ?? lang.replace("_", "-");
     }
