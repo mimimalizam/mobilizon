@@ -11,7 +11,7 @@ defmodule Mobilizon.Service.Workers.NotificationTest do
 
   use Mobilizon.DataCase
 
-  import Swoosh.TestAssertions
+  import Mobilizon.Tests.SwooshAssertions
   import Mobilizon.Factory
 
   @email "someone@somewhere.tld"
@@ -37,7 +37,7 @@ defmodule Mobilizon.Service.Workers.NotificationTest do
         args: %{"op" => "before_event_notification", "participant_id" => participant_id}
       })
 
-      assert_email_sent(to: participant.actor.user.email)
+      assert_email_sending(to: participant.actor.user.email)
     end
 
     test "unless the person is no longer participating" do
@@ -92,7 +92,7 @@ defmodule Mobilizon.Service.Workers.NotificationTest do
         args: %{"op" => "on_day_notification", "user_id" => user_id}
       })
 
-      assert_email_sent(to: user.email)
+      assert_email_sending(to: user.email)
     end
 
     test "unless the person is no longer participating" do
@@ -159,7 +159,7 @@ defmodule Mobilizon.Service.Workers.NotificationTest do
         args: %{"op" => "on_day_notification", "user_id" => user_id}
       })
 
-      assert_email_sent(to: @email, subject: "11 events planned today")
+      assert_email_sending(to: @email, subject: "11 events planned today")
     end
   end
 
@@ -184,7 +184,7 @@ defmodule Mobilizon.Service.Workers.NotificationTest do
         args: %{"op" => "weekly_notification", "user_id" => user_id}
       })
 
-      assert_email_sent(to: user.email)
+      assert_email_sending(to: user.email)
     end
 
     test "unless the person is no longer participating" do
@@ -263,7 +263,7 @@ defmodule Mobilizon.Service.Workers.NotificationTest do
         args: %{"op" => "weekly_notification", "user_id" => user_id}
       })
 
-      assert_email_sent(to: @email, subject: "11 events planned this week")
+      assert_email_sending(to: @email, subject: "11 events planned this week")
     end
   end
 
@@ -289,7 +289,7 @@ defmodule Mobilizon.Service.Workers.NotificationTest do
         }
       })
 
-      assert_email_sent(to: user.email)
+      assert_email_sending(to: user.email)
     end
   end
 end
