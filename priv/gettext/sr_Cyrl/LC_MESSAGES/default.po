@@ -30,7 +30,7 @@ msgstr "Активирај мој налог"
 #: lib/web/templates/email/email.text.eex:9
 #, elixir-autogen, elixir-format
 msgid "Ask the community on Framacolibri"
-msgstr "Питај заједницу на Framacolibri"
+msgstr "Сазнајте више и обратите се заједници путем ове странице."
 
 #: lib/web/templates/email/report.text.eex:17
 #, elixir-autogen, elixir-format

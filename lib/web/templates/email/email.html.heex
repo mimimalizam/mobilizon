@@ -141,12 +141,14 @@
                 <h2 style="font-size: 20px; font-weight: 400; color: #FFFFFF; margin: 0;">
                   <%= gettext("Need help? Is something not working as expected?") %>
                 </h2>
+                <% help_link =
+                  if @locale in ["sr", "sr_Cyrl", "sr-Cyrl", "sr_Latn", "sr-Latn"] do
+                    "#{Mobilizon.Web.Endpoint.url()}/about/instance"
+                  else
+                    "https://framacolibri.org/c/mobilizon/39"
+                  end %>
                 <p style="margin: 0;">
-                  <a
-                    href="https://framacolibri.org/c/mobilizon/39"
-                    target="_blank"
-                    style="color: #FFFFFF;"
-                  >
+                  <a href={help_link} target="_blank" style="color: #FFFFFF;">
                     <%= gettext("Ask the community on Framacolibri") %>
                   </a>
                 </p>

@@ -34,7 +34,7 @@ msgstr "Aktiviraj moj nalog"
 #: lib/web/templates/email/email.text.eex:9
 #, elixir-autogen, elixir-format
 msgid "Ask the community on Framacolibri"
-msgstr "Pitaj zajednicu na Framacolibri"
+msgstr "Saznajte više i obratite se zajednici putem ove stranice."
 
 #: lib/web/templates/email/report.text.eex:17
 #, elixir-autogen, elixir-format
