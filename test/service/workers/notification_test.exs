@@ -11,6 +11,7 @@ defmodule Mobilizon.Service.Workers.NotificationTest do
 
   use Mobilizon.DataCase
 
+  import Mobilizon.Tests.SwooshAssertions
   import Swoosh.TestAssertions
   import Mobilizon.Factory
 
@@ -33,11 +34,13 @@ defmodule Mobilizon.Service.Workers.NotificationTest do
       %Participant{id: participant_id} =
         participant = insert(:participant, role: :participant, actor: actor)
 
+      expected_email = participant.actor.user.email
+
       Notification.perform(%Oban.Job{
         args: %{"op" => "before_event_notification", "participant_id" => participant_id}
       })
 
-      assert_email_sent(to: participant.actor.user.email)
+      assert_email_sending(%Swoosh.Email{to: [{_, ^expected_email}]})
     end
 
     test "unless the person is no longer participating" do
@@ -92,7 +95,8 @@ defmodule Mobilizon.Service.Workers.NotificationTest do
         args: %{"op" => "on_day_notification", "user_id" => user_id}
       })
 
-      assert_email_sent(to: user.email)
+      expected_email = user.email
+      assert_email_sending(%Swoosh.Email{to: [{_, ^expected_email}]})
     end
 
     test "unless the person is no longer participating" do
@@ -159,7 +163,7 @@ defmodule Mobilizon.Service.Workers.NotificationTest do
         args: %{"op" => "on_day_notification", "user_id" => user_id}
       })
 
-      assert_email_sent(to: @email, subject: "11 events planned today")
+      assert_email_sending(%Swoosh.Email{to: [{_, @email}], subject: "11 events planned today"})
     end
   end
 
@@ -184,7 +188,8 @@ defmodule Mobilizon.Service.Workers.NotificationTest do
         args: %{"op" => "weekly_notification", "user_id" => user_id}
       })
 
-      assert_email_sent(to: user.email)
+      expected_email = user.email
+      assert_email_sending(%Swoosh.Email{to: [{_, ^expected_email}]})
     end
 
     test "unless the person is no longer participating" do
@@ -263,7 +268,10 @@ defmodule Mobilizon.Service.Workers.NotificationTest do
         args: %{"op" => "weekly_notification", "user_id" => user_id}
       })
 
-      assert_email_sent(to: @email, subject: "11 events planned this week")
+      assert_email_sending(%Swoosh.Email{
+        to: [{_, @email}],
+        subject: "11 events planned this week"
+      })
     end
   end
 
@@ -289,7 +297,8 @@ defmodule Mobilizon.Service.Workers.NotificationTest do
         }
       })
 
-      assert_email_sent(to: user.email)
+      expected_email = user.email
+      assert_email_sending(%Swoosh.Email{to: [{_, ^expected_email}]})
     end
   end
 end

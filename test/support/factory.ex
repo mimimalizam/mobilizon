@@ -180,7 +180,10 @@ defmodule Mobilizon.Factory do
   @spec event_factory :: Mobilizon.Events.Event.t()
   def event_factory do
     actor = build(:actor)
-    start = Timex.shift(DateTime.utc_now(), hours: 2)
+    # move the event start time so that event is after 8AM in the user's timezone
+    # (by default +9h from now) to align with the daily notification logic
+    # which schedules notifications if the event starts after 8AM (hour > 8)
+    start = Timex.shift(DateTime.utc_now(), hours: 9)
     uuid = Ecto.UUID.generate()
 
     %Mobilizon.Events.Event{
