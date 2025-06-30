@@ -12,6 +12,7 @@ defmodule Mobilizon.Service.Workers.NotificationTest do
   use Mobilizon.DataCase
 
   import Mobilizon.Tests.SwooshAssertions
+  import Swoosh.TestAssertions
   import Mobilizon.Factory
 
   @email "someone@somewhere.tld"
