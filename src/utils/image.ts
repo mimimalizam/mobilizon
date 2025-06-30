@@ -91,6 +91,9 @@ export function asMediaInput(
   fallbackId?: number
 ): any {
   if (!mmedia.file.value) {
+    if (fallbackId || mmedia.firstHash) {
+      return { [name]: null };
+    }
     return {};
   }
 
