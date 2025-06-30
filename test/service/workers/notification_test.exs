@@ -89,7 +89,17 @@ defmodule Mobilizon.Service.Workers.NotificationTest do
       user = Map.put(user, :settings, settings)
       %Actor{} = actor = insert(:actor, user: user)
 
-      %Participant{} = insert(:participant, role: :participant, actor: actor)
+      {start, _} = Notification.calculate_start_end(1, "Europe/Paris")
+
+      begins_on =
+        start
+        |> DateTime.add(3600)
+        |> DateTime.shift_zone!("Etc/UTC")
+
+      event = insert(:event, begins_on: begins_on)
+
+      %Participant{} =
+        insert(:participant, role: :participant, actor: actor, event: event)
 
       Notification.perform(%Oban.Job{
         args: %{"op" => "on_day_notification", "user_id" => user_id}
@@ -154,8 +164,19 @@ defmodule Mobilizon.Service.Workers.NotificationTest do
       user = Map.put(user, :settings, settings)
       %Actor{} = actor = insert(:actor, user: user)
 
+      {start, _} = Notification.calculate_start_end(1, "Europe/Paris")
+
+      begins_on =
+        start
+        |> DateTime.add(3600)
+        |> DateTime.shift_zone!("Etc/UTC")
+
       Enum.reduce(0..10, [], fn _i, acc ->
-        %Participant{} = participant = insert(:participant, role: :participant, actor: actor)
+        event = insert(:event, begins_on: begins_on)
+
+        %Participant{} =
+          participant = insert(:participant, role: :participant, actor: actor, event: event)
+
         acc ++ [participant]
       end)
 
