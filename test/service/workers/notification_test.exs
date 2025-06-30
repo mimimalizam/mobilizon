@@ -163,7 +163,7 @@ defmodule Mobilizon.Service.Workers.NotificationTest do
         args: %{"op" => "on_day_notification", "user_id" => user_id}
       })
 
-      assert_email_sending(to: @email, subject: "11 events planned today")
+      assert_email_sending(%Swoosh.Email{to: [{_, @email}], subject: "11 events planned today"})
     end
   end
 
@@ -268,7 +268,10 @@ defmodule Mobilizon.Service.Workers.NotificationTest do
         args: %{"op" => "weekly_notification", "user_id" => user_id}
       })
 
-      assert_email_sending(to: @email, subject: "11 events planned this week")
+      assert_email_sending(%Swoosh.Email{
+        to: [{_, @email}],
+        subject: "11 events planned this week"
+      })
     end
   end
 
