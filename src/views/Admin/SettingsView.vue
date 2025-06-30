@@ -522,10 +522,12 @@ useHead({
   title: computed(() => t("Settings")),
 });
 
-const settingsToWrite = ref<IAdminSettings>(defaultAdminSettings);
+const settingsToWrite = ref<IAdminSettings | null>(null);
 
 watch(adminSettings, () => {
-  settingsToWrite.value = { ...adminSettings.value };
+  if (adminSettings.value) {
+    settingsToWrite.value = { ...adminSettings.value };
+  }
 });
 
 const filteredLanguages = ref<string[]>([]);
@@ -571,8 +573,14 @@ saveAdminSettingsError((e) => {
 });
 
 const updateSettings = async (): Promise<void> => {
+  if (!settingsToWrite.value) return;
+  const settings = { ...(settingsToWrite.value as IAdminSettings) };
+  delete settings.instanceLogo;
+  delete settings.instanceFavicon;
+  delete settings.defaultPicture;
+
   const variables = {
-    ...settingsToWrite.value,
+    ...settings,
     ...asMediaInput(
       instanceLogo,
       "instanceLogo",
