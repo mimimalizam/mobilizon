@@ -98,8 +98,6 @@ defmodule Mobilizon.Service.Workers.NotificationTest do
       user = Map.put(user, :settings, settings)
       %Actor{} = actor = insert(:actor, user: user)
 
-      {start, _} = Notification.calculate_start_end(1, "Europe/Paris")
-
       begins_on =
         "Europe/Paris"
         |> start_of_day()
