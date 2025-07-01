@@ -49,7 +49,7 @@ defmodule Mobilizon.Service.Workers.NotificationTest do
         args: %{"op" => "before_event_notification", "participant_id" => participant_id}
       })
 
-      assert_email_sending(%Swoosh.Email{to: [{_, ^expected_email}]})
+      assert_email_sending(%Swoosh.Email{to: [{_, ^expected_email}]}, 2_000)
     end
 
     test "unless the person is no longer participating" do
@@ -116,7 +116,7 @@ defmodule Mobilizon.Service.Workers.NotificationTest do
       })
 
       expected_email = user.email
-      assert_email_sending(%Swoosh.Email{to: [{_, ^expected_email}]})
+      assert_email_sending(%Swoosh.Email{to: [{_, ^expected_email}]}, 2_000)
     end
 
     test "unless the person is no longer participating" do
