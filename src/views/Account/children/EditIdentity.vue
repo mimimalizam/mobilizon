@@ -90,7 +90,8 @@
       <o-field class="flex justify-center !my-6">
         <div class="control">
           <o-button type="button" variant="primary" @click="submit()">
-            {{ t("Create my profile") }}
+            <span v-if="isUpdate">{{ t("Update my profile") }}</span>
+            <span v-else>{{ t("Create my profile") }}</span>
           </o-button>
         </div>
       </o-field>
