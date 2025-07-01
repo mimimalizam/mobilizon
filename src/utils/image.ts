@@ -88,25 +88,34 @@ export async function loadWrappedMedia(
 export function asMediaInput(
   mmedia: IModifiableMedia,
   name: string,
-  fallbackId: number
+  fallbackId?: number
 ): any {
-  const ret = {
-    [name]: {},
-  };
-  if (mmedia.file.value) {
-    if (mmedia.firstHash != mmedia.hash) {
-      ret[name] = {
+  if (!mmedia.file.value) {
+    if (fallbackId || mmedia.firstHash) {
+      return { [name]: null };
+    }
+    return {};
+  }
+
+  if (mmedia.firstHash != mmedia.hash) {
+    return {
+      [name]: {
         media: {
           name: mmedia.file.value?.name,
           alt: "",
           file: mmedia.file.value,
         },
-      };
-    } else {
-      ret[name] = {
-        mediaId: fallbackId,
-      };
-    }
+      },
+    };
   }
-  return ret;
+
+  if (!fallbackId) {
+    return {};
+  }
+
+  return {
+    [name]: {
+      mediaId: fallbackId,
+    },
+  };
 }

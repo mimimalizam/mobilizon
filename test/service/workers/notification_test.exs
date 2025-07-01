@@ -17,6 +17,15 @@ defmodule Mobilizon.Service.Workers.NotificationTest do
 
   @email "someone@somewhere.tld"
 
+  defp start_of_day(timezone) do
+    DateTime.utc_now()
+    |> Mobilizon.Service.DateTime.datetime_tz_convert(timezone)
+    |> Map.put(:hour, 8)
+    |> Map.put(:minute, 0)
+    |> Map.put(:second, 0)
+    |> Map.put(:microsecond, {0, 0})
+  end
+
   describe "A before_event_notification job sends an email" do
     test "if the user is still participating" do
       %User{id: user_id} = user = insert(:user)
@@ -40,7 +49,7 @@ defmodule Mobilizon.Service.Workers.NotificationTest do
         args: %{"op" => "before_event_notification", "participant_id" => participant_id}
       })
 
-      assert_email_sending(%Swoosh.Email{to: [{_, ^expected_email}]})
+      assert_email_sending(%Swoosh.Email{to: [{_, ^expected_email}]}, 2_000)
     end
 
     test "unless the person is no longer participating" do
@@ -89,14 +98,23 @@ defmodule Mobilizon.Service.Workers.NotificationTest do
       user = Map.put(user, :settings, settings)
       %Actor{} = actor = insert(:actor, user: user)
 
-      %Participant{} = insert(:participant, role: :participant, actor: actor)
+      begins_on =
+        "Europe/Paris"
+        |> start_of_day()
+        |> DateTime.add(3600)
+        |> DateTime.shift_zone!("Etc/UTC")
+
+      event = insert(:event, begins_on: begins_on)
+
+      %Participant{} =
+        insert(:participant, role: :participant, actor: actor, event: event)
 
       Notification.perform(%Oban.Job{
         args: %{"op" => "on_day_notification", "user_id" => user_id}
       })
 
       expected_email = user.email
-      assert_email_sending(%Swoosh.Email{to: [{_, ^expected_email}]})
+      assert_email_sending(%Swoosh.Email{to: [{_, ^expected_email}]}, 2_000)
     end
 
     test "unless the person is no longer participating" do
@@ -154,8 +172,18 @@ defmodule Mobilizon.Service.Workers.NotificationTest do
       user = Map.put(user, :settings, settings)
       %Actor{} = actor = insert(:actor, user: user)
 
+      begins_on =
+        "Europe/Paris"
+        |> start_of_day()
+        |> DateTime.add(3600)
+        |> DateTime.shift_zone!("Etc/UTC")
+
       Enum.reduce(0..10, [], fn _i, acc ->
-        %Participant{} = participant = insert(:participant, role: :participant, actor: actor)
+        event = insert(:event, begins_on: begins_on)
+
+        %Participant{} =
+          participant = insert(:participant, role: :participant, actor: actor, event: event)
+
         acc ++ [participant]
       end)
 
