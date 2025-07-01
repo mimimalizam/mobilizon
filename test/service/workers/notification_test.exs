@@ -17,6 +17,15 @@ defmodule Mobilizon.Service.Workers.NotificationTest do
 
   @email "someone@somewhere.tld"
 
+  defp start_of_day(timezone) do
+    DateTime.utc_now()
+    |> Mobilizon.Service.DateTime.datetime_tz_convert(timezone)
+    |> Map.put(:hour, 8)
+    |> Map.put(:minute, 0)
+    |> Map.put(:second, 0)
+    |> Map.put(:microsecond, {0, 0})
+  end
+
   describe "A before_event_notification job sends an email" do
     test "if the user is still participating" do
       %User{id: user_id} = user = insert(:user)
@@ -92,7 +101,8 @@ defmodule Mobilizon.Service.Workers.NotificationTest do
       {start, _} = Notification.calculate_start_end(1, "Europe/Paris")
 
       begins_on =
-        start
+        "Europe/Paris"
+        |> start_of_day()
         |> DateTime.add(3600)
         |> DateTime.shift_zone!("Etc/UTC")
 
@@ -164,10 +174,9 @@ defmodule Mobilizon.Service.Workers.NotificationTest do
       user = Map.put(user, :settings, settings)
       %Actor{} = actor = insert(:actor, user: user)
 
-      {start, _} = Notification.calculate_start_end(1, "Europe/Paris")
-
       begins_on =
-        start
+        "Europe/Paris"
+        |> start_of_day()
         |> DateTime.add(3600)
         |> DateTime.shift_zone!("Etc/UTC")
 
