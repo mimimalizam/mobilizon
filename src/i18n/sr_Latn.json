@@ -1488,6 +1488,7 @@
   "Create my event": "Napravi moj događaj",
   "Create my group": "Napravi moju grupu",
   "Create my profile": "Napravi moj profil",
+  "Update my profile": "Ažuriraj moj profil",
   "Create token": "Napravite token",
   "Create": "Napravite",
   "Current identity has been changed to {identityName} in order to manage this event.": "Trenutni identitet je promenjen u {identityName} kako biste mogli da upravljate ovim događajem.",
