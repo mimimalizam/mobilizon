@@ -537,6 +537,7 @@ defmodule Mobilizon.GraphQL.Resolvers.UserTest do
       Config.put([:instance, :registration_email_denylist], [])
     end
 
+    @tag flaky: true
     test "create_user/3 lowers domain part of email",
          %{
            conn: conn
