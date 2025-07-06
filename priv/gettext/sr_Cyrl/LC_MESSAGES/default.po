@@ -655,7 +655,7 @@ msgstr ""
 #, elixir-autogen, elixir-format
 msgctxt "terms"
 msgid "If you discover or suspect any Service security breaches, please let us know as soon as possible. For security holes in the Mobilizon software itself, please contact <a href=\"https://framagit.org/framasoft/mobilizon/\">its contributors</a> directly."
-msgstr "Ако откријеш или посумњаш у било какве сигурносне пропусте у сервису, молимо те да нас обавестиш што је пре могуће. За сигурносне рупе у самом Мобилизон софтверу, молимо те да директно контактираш <a href=\"https://framagit.org/framasoft/mobilizon/\">његове сараднике</a>."
+msgstr "Ако откријете или посумњате у било какве сигурносне пропусте у сервису, молимо вас да нас обавестите што је пре могуће. За сигурносне рупе у самом Мобилизон софтверу, молимо вас да директно контактирате <a href=\"https://framagit.org/framasoft/mobilizon/\">његове сараднике</a>."
 
 #: lib/web/templates/api/terms.html.heex:240
 #, elixir-autogen, elixir-format
@@ -1125,7 +1125,7 @@ msgstr "Приступањем или коришћењем Услуге, при�
 #, elixir-autogen, elixir-format
 msgctxt "terms"
 msgid "For information about how we collect and use information about users of the Service, please check our <a href=\"/privacy\">privacy policy</a>."
-msgstr "За информације о томе како прикупљамо и користимо информације о корисницима Услуге, погледајте нашу <а хреф=\"/привацy\">политику приватности</а>."
+msgstr "За информације о томе како прикупљамо и користимо информације о корисницима Услуге, погледајте нашу <а хреф=\"/privacy\">политику приватности</а>."
 
 #: lib/web/templates/api/terms.html.heex:88
 #, elixir-autogen, elixir-format
@@ -1172,7 +1172,7 @@ msgctxt "terms"
 msgid "Some terms, technical or otherwise, used in the text below may cover concepts that are difficult to grasp. We have provided <a href=\"/glossary\">a glossary</a> to help you understand them better."
 msgstr ""
 "Неки технички или други изрази који се користе у даљњем тексту могу "
-"покривати појмове који се тешко разумеју. За лакше разумијевање појмова "
+"покривати појмове који се тешко разумеју. За лакше разумевање појмова "
 "постоји <a href=\"/glossary\">речник поjмова</a>."
 
 #: lib/web/templates/api/terms.html.heex:120
