@@ -406,7 +406,7 @@ msgstr[2] ""
 msgid "You have one event this week:"
 msgid_plural "You have %{total} events this week:"
 msgstr[0] "Ове недеље имате један догађај:"
-msgstr[0] "Ове недеље имате један догађај:"
+msgstr[1] "Ове недеље имате један догађај:"
 msgstr[2] "Ове недеље имате %{total} догађајa:"
 
 #: lib/service/metadata/utils.ex:53
