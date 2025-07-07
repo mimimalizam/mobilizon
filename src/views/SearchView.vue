@@ -578,7 +578,14 @@ import GroupCard from "@/components/Group/GroupCard.vue";
 import { CURRENT_USER_CLIENT } from "@/graphql/user";
 import { ICurrentUser } from "@/types/current-user.model";
 import { useQuery } from "@vue/apollo-composable";
-import { computed, defineAsyncComponent, inject, ref, watch } from "vue";
+import {
+  computed,
+  defineAsyncComponent,
+  inject,
+  ref,
+  watch,
+  type Ref,
+} from "vue";
 import { useI18n } from "vue-i18n";
 import {
   floatTransformer,
@@ -751,12 +758,12 @@ useHead({
   title: computed(() => t("Explore events")),
 });
 
-const dateFnsLocale = inject<Locale>("dateFnsLocale");
+const dateFnsLocale = inject<Ref<Locale>>("dateFnsLocale");
 
 const weekend = computed((): { start: Date; end: Date } => {
   const now = new Date();
-  const endOfWeekDate = endOfWeek(now, { locale: dateFnsLocale });
-  const startOfWeekDate = startOfWeek(now, { locale: dateFnsLocale });
+  const endOfWeekDate = endOfWeek(now, { locale: dateFnsLocale?.value });
+  const startOfWeekDate = startOfWeek(now, { locale: dateFnsLocale?.value });
   const [start, end] = eachWeekendOfInterval({
     start: startOfWeekDate,
     end: endOfWeekDate,
@@ -788,15 +795,15 @@ const dateOptions: Record<string, ISearchTimeOption> = {
   week: {
     label: t("This week") as string,
     start: new Date().toISOString(),
-    end: endOfWeek(new Date(), { locale: dateFnsLocale }).toISOString(),
+    end: endOfWeek(new Date(), { locale: dateFnsLocale?.value }).toISOString(),
   },
   next_week: {
     label: t("Next week") as string,
     start: startOfWeek(addWeeks(new Date(), 1), {
-      locale: dateFnsLocale,
+      locale: dateFnsLocale?.value,
     }).toISOString(),
     end: endOfWeek(addWeeks(new Date(), 1), {
-      locale: dateFnsLocale,
+      locale: dateFnsLocale?.value,
     }).toISOString(),
   },
   month: {

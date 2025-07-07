@@ -214,7 +214,7 @@ import { EventStatus } from "@/types/enums";
 import RouteName from "../../router/name";
 import InlineAddress from "@/components/Address/InlineAddress.vue";
 
-import { computed, inject } from "vue";
+import { computed, inject, type Ref } from "vue";
 import MobilizonTag from "@/components/TagElement.vue";
 import AccountCircle from "vue-material-design-icons/AccountCircle.vue";
 import Video from "vue-material-design-icons/Video.vue";
@@ -258,33 +258,39 @@ const actorAvatarURL = computed<string | null>(() =>
   organizerAvatarUrl(props.event)
 );
 
-const dateFnsLocale = inject<Locale>("dateFnsLocale");
+const dateFnsLocale = inject<Ref<Locale>>("dateFnsLocale");
 
 const isDifferentBeginsEndsDate = computed(() => {
-  if (!dateFnsLocale) return;
+  if (!dateFnsLocale?.value) return;
   const beginsOnStr = formatDateForEvent(
     new Date(props.event.beginsOn),
-    dateFnsLocale
+    dateFnsLocale?.value
   );
   const endsOnStr = props.event.endsOn
-    ? formatDateForEvent(new Date(props.event.endsOn), dateFnsLocale)
+    ? formatDateForEvent(new Date(props.event.endsOn), dateFnsLocale?.value)
     : null;
   return endsOnStr && endsOnStr != beginsOnStr;
 });
 
 const formatBeginsOnDateWithCurrentLocale = computed(() => {
-  if (!dateFnsLocale) return;
-  return formatDateForEvent(new Date(props.event.beginsOn), dateFnsLocale);
+  if (!dateFnsLocale?.value) return;
+  return formatDateForEvent(
+    new Date(props.event.beginsOn),
+    dateFnsLocale.value
+  );
 });
 
 const formatEndsOnDateWithCurrentLocale = computed(() => {
-  if (!dateFnsLocale) return;
-  return formatDateForEvent(new Date(props.event.endsOn), dateFnsLocale);
+  if (!dateFnsLocale?.value) return;
+  return formatDateForEvent(new Date(props.event.endsOn), dateFnsLocale.value);
 });
 
 const formatDateTimeWithCurrentLocale = computed(() => {
-  if (!dateFnsLocale) return;
-  return formatDateTimeForEvent(new Date(props.event.beginsOn), dateFnsLocale);
+  if (!dateFnsLocale?.value) return;
+  return formatDateTimeForEvent(
+    new Date(props.event.beginsOn),
+    dateFnsLocale.value
+  );
 });
 
 const isInternal = computed(() => {

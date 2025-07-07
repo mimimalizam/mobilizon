@@ -19,7 +19,7 @@ import debounce from "lodash/debounce";
 import { ITodo } from "../../types/todos";
 import { UPDATE_TODO } from "../../graphql/todos";
 import { Snackbar } from "@/plugins/snackbar";
-import { computed, inject, ref } from "vue";
+import { computed, inject, ref, type Ref } from "vue";
 import { useMutation } from "@vue/apollo-composable";
 import { Locale } from "date-fns";
 
@@ -91,9 +91,9 @@ updateTodoError((e) => {
 
 const debounceUpdateTodo = debounce(updateTodo, 1000);
 
-const dateFnsLocale = inject<Locale>("dateFnsLocale");
+const dateFnsLocale = inject<Ref<Locale>>("dateFnsLocale");
 
 const firstDayOfWeek = computed((): number => {
-  return dateFnsLocale?.options?.weekStartsOn ?? 0;
+  return dateFnsLocale?.value?.options?.weekStartsOn ?? 0;
 });
 </script>

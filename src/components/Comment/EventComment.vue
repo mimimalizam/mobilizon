@@ -42,7 +42,7 @@
           <a :href="commentURL">
             <small v-if="comment.updatedAt">{{
               formatDistanceToNow(new Date(comment.updatedAt), {
-                locale: dateFnsLocale,
+                locale: dateFnsLocale?.value,
                 addSuffix: true,
               })
             }}</small>
@@ -221,6 +221,7 @@ import {
   onMounted,
   ref,
   nextTick,
+  type Ref,
 } from "vue";
 import { useRoute, useRouter } from "vue-router";
 import { useI18n } from "vue-i18n";
@@ -398,7 +399,7 @@ oneCreateReportDone(() => {
 });
 
 const actorComment = computed(() => props.comment.actor);
-const dateFnsLocale = inject<Locale>("dateFnsLocale");
+const dateFnsLocale = inject<Ref<Locale>>("dateFnsLocale");
 </script>
 <style>
 article.mbz-comment .mention.h-card {
