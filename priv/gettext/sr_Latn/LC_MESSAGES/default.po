@@ -423,7 +423,10 @@ msgstr "Zahtev jednog učesnika %{title} za procesiranje"
 #: lib/web/templates/email/notification_each_week.text.eex:3
 #, elixir-format, elixir-autogen
 msgid "You have one event this week:"
-msgstr "Imate jedan događaj ove nedelje:"
+msgid_plural "You have %{total} events this week:"
+msgstr[0] "Ove nedelje imate jedan događaj:"
+msgstr[1] "Ove nedelje imate jedan događaj:"
+msgstr[2] "Ove nedelje imate %{total} događaja:"
 
 #: lib/service/metadata/utils.ex:53
 #, elixir-autogen, elixir-format
