@@ -198,6 +198,8 @@ defmodule Mobilizon.GraphQL.Resolvers.MemberTest do
         {:ok, %Tesla.Env{status: 200, body: %{"role" => "INVITED"}}}
       end)
 
+      Mobilizon.Users.update_user_default_actor(user, actor)
+
       {:ok, conn: conn, actor: actor, user: user, group: group, target_actor: target_actor}
     end
 
