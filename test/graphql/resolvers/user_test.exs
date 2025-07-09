@@ -462,6 +462,7 @@ defmodule Mobilizon.GraphQL.Resolvers.UserTest do
       Config.put([:instance, :registration_email_allowlist], [])
     end
 
+    @tag flaky: true
     test "create_user/3 allows registration when user email is on the allowlist", %{conn: conn} do
       Config.put([:instance, :registrations_open], false)
       Config.put([:instance, :registration_email_allowlist], [@user_creation.email])
@@ -479,6 +480,7 @@ defmodule Mobilizon.GraphQL.Resolvers.UserTest do
       Config.put([:instance, :registration_email_allowlist], [])
     end
 
+    @tag flaky: true
     test "create_user/3 doesn't allow registration when user email domain is on the denylist", %{
       conn: conn
     } do
