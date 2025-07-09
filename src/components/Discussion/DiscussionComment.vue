@@ -72,7 +72,7 @@
           >
             {{
               formatDistanceToNow(new Date(comment.updatedAt?.toString()), {
-                locale: dateFnsLocale,
+                locale: dateFnsLocale?.value,
               }) || t("Right now")
             }}</span
           >
@@ -100,7 +100,7 @@
           {{
             t("Edited {ago}", {
               ago: formatDistanceToNow(new Date(comment.updatedAt), {
-                locale: dateFnsLocale,
+                locale: dateFnsLocale?.value,
               }),
             })
           }}
@@ -149,7 +149,7 @@
 import { formatDistanceToNow } from "date-fns";
 import { IComment } from "../../types/comment.model";
 import { IPerson, usernameWithDomain } from "../../types/actor";
-import { computed, defineAsyncComponent, inject, ref } from "vue";
+import { computed, defineAsyncComponent, inject, ref, type Ref } from "vue";
 import { formatDateTimeString } from "@/filters/datetime";
 import AccountCircle from "vue-material-design-icons/AccountCircle.vue";
 import DotsHorizontal from "vue-material-design-icons/DotsHorizontal.vue";
@@ -183,7 +183,7 @@ const editMode = ref(false);
 
 const updatedComment = ref("");
 
-const dateFnsLocale = inject<Locale>("dateFnsLocale");
+const dateFnsLocale = inject<Ref<Locale>>("dateFnsLocale");
 
 const isReportModalActive = ref(false);
 

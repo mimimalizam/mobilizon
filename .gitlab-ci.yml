@@ -128,13 +128,36 @@ exunit:
     - mix deps.get
     - mix prepare_test
   script:
-    - mix coveralls --exclude flaky:true
+    - mix coveralls --exclude flaky:true test/federation test/graphql test/mobilizon
   artifacts:
     when: always
     reports:
       junit:
         - test-junit-report.xml
-    expire_in: 30 days
+    expire_in: 5 days
+  tags:
+    - nikola
+
+exunit_2:
+  stage: test
+  services:
+    - name: postgis/postgis:16-3.4
+      alias: postgres
+  variables:
+    MIX_ENV: test
+    MOBILIZON_DATABASE_DBNAME: mobilizon_test
+    MOBILIZON_INSTANCE_HOST: mobilizon.test
+  before_script:
+    - mix deps.get
+    - mix prepare_test
+  script:
+    - mix coveralls --exclude flaky:true test/service test/web test/tasks
+  artifacts:
+    when: always
+    reports:
+      junit:
+        - test-junit-report.xml
+    expire_in: 5 days
   tags:
     - nikola
 
@@ -160,7 +183,7 @@ exunit_flaky_tests:
     reports:
       junit:
         - test-junit-report.xml
-    expire_in: 30 days
+    expire_in: 5 days
   tags:
     - nikola
 
@@ -179,7 +202,7 @@ vitest:
     reports:
       junit:
         - junit.xml
-    expire_in: 30 days
+    expire_in: 5 days
   tags:
     - nikola
 

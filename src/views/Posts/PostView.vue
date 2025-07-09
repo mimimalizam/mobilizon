@@ -72,7 +72,7 @@
                     relative_time: formatDistanceToNowStrict(
                       new Date(post.updatedAt),
                       {
-                        locale: dateFnsLocale,
+                        locale: dateFnsLocale?.value,
                       }
                     ),
                   })
@@ -265,7 +265,7 @@ import {
 } from "@/composition/apollo/actor";
 import { useCurrentUserClient } from "@/composition/apollo/user";
 import { useMutation, useQuery } from "@vue/apollo-composable";
-import { computed, inject, ref } from "vue";
+import { computed, inject, ref, type Ref } from "vue";
 import { IPost } from "@/types/post.model";
 import { DELETE_POST, FETCH_POST } from "@/graphql/post";
 import { useHead } from "@/utils/head";
@@ -401,7 +401,7 @@ const groupDomain = computed((): string | undefined | null => {
   return post.value?.attributedTo?.domain;
 });
 
-const dateFnsLocale = inject<Locale>("dateFnsLocale");
+const dateFnsLocale = inject<Ref<Locale>>("dateFnsLocale");
 
 const isCurrentActorAGroupModerator = computed((): boolean => {
   return hasCurrentActorThisRole([

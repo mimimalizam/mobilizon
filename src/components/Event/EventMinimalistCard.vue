@@ -150,7 +150,7 @@ import Video from "vue-material-design-icons/Video.vue";
 import AccountCircle from "vue-material-design-icons/AccountCircle.vue";
 import AccountMultiple from "vue-material-design-icons/AccountMultiple.vue";
 import Tag from "@/components/TagElement.vue";
-import { computed, inject } from "vue";
+import { computed, inject, type Ref } from "vue";
 import type { Locale } from "date-fns";
 import { formatDateForEvent } from "@/utils/datetime";
 
@@ -162,16 +162,16 @@ const props = withDefaults(
   { showOrganizer: false }
 );
 
-const dateFnsLocale = inject<Locale>("dateFnsLocale");
+const dateFnsLocale = inject<Ref<Locale>>("dateFnsLocale");
 
 const isDifferentBeginsEndsDate = computed(() => {
-  if (!dateFnsLocale) return;
+  if (!dateFnsLocale?.value) return;
   const beginsOnStr = formatDateForEvent(
     new Date(props.event.beginsOn),
-    dateFnsLocale
+    dateFnsLocale.value
   );
   const endsOnStr = props.event.endsOn
-    ? formatDateForEvent(new Date(props.event.endsOn), dateFnsLocale)
+    ? formatDateForEvent(new Date(props.event.endsOn), dateFnsLocale.value)
     : null;
   return endsOnStr && endsOnStr != beginsOnStr;
 });

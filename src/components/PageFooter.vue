@@ -77,6 +77,7 @@
 <script setup lang="ts">
 import { saveLocaleData } from "@/utils/auth";
 import { loadLanguageAsync } from "@/utils/i18n";
+import { setDateFnsLocale } from "@/plugins/dateFns";
 import RouteName from "../router/name";
 import langs from "../i18n/langs.json";
 import { watch } from "vue";
@@ -88,6 +89,7 @@ watch(locale, async () => {
   if (locale) {
     console.debug("Setting locale from footer");
     await loadLanguageAsync(locale.value as string);
+    await setDateFnsLocale(locale.value as string);
     saveLocaleData(locale.value as string);
   }
 });
