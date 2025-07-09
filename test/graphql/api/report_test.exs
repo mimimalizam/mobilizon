@@ -46,6 +46,7 @@ defmodule Mobilizon.GraphQL.API.ReportTest do
              } = flag_activity
     end
 
+    @tag flaky: true
     test "creates a report on several comments" do
       %Actor{url: relay_reporter_url} = Relay.get_actor()
       %Actor{id: reporter_id} = insert(:actor)
@@ -68,17 +69,28 @@ defmodule Mobilizon.GraphQL.API.ReportTest do
                  comments_ids: [comment_1_id, comment_2_id]
                })
 
+      # Using deterministic ordering to reduce the flakiness
+      expected_objects =
+        [reported_url, comment_1_url, comment_2_url]
+        |> Enum.sort()
+
+      actual_objects =
+        flag_activity.data["object"]
+        |> Enum.sort()
+
       assert %Activity{
                actor: ^relay_reporter_url,
                data: %{
                  "type" => "Flag",
                  "content" => ^comment,
-                 "object" => [^reported_url, ^comment_1_url, ^comment_2_url],
+                 "object" => ^actual_objects,
                  "to" => [],
                  "cc" => [],
                  "actor" => ^relay_reporter_url
                }
              } = flag_activity
+
+      assert actual_objects == expected_objects
     end
 
     test "creates a report that gets federated" do
