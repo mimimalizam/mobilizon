@@ -88,7 +88,7 @@
 import { formatDistanceToNowStrict } from "date-fns";
 import { IConversation } from "../../types/conversation";
 import RouteName from "../../router/name";
-import { computed, inject } from "vue";
+import { computed, inject, type Ref } from "vue";
 import { formatDateTimeString } from "../../filters/datetime";
 import type { Locale } from "date-fns";
 import AccountCircle from "vue-material-design-icons/AccountCircle.vue";
@@ -104,13 +104,13 @@ const props = defineProps<{
 
 const conversation = computed(() => props.conversation);
 
-const dateFnsLocale = inject<Locale>("dateFnsLocale");
+const dateFnsLocale = inject<Ref<Locale>>("dateFnsLocale");
 const { t } = useI18n({ useScope: "global" });
 
 const distanceToNow = computed(() => {
   return (
     formatDistanceToNowStrict(new Date(actualDate.value), {
-      locale: dateFnsLocale,
+      locale: dateFnsLocale?.value,
     }) ?? t("Right now")
   );
 });

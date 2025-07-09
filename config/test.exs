@@ -93,7 +93,8 @@ config :mobilizon, Mobilizon.Web.Auth.Guardian, secret_key: "some secret"
 
 config :mobilizon, :activitypub, sign_object_fetches: false
 
-config :mobilizon, Mobilizon.Web.Gettext, allowed_locales: ["fr", "en", "es", "ru"]
+config :mobilizon, Mobilizon.Web.Gettext,
+  allowed_locales: ["fr", "en", "es", "ru", "sr_Cyrl", "sr_Latn"]
 
 config :junit_formatter, report_dir: "."
 

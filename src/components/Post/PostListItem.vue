@@ -28,7 +28,7 @@
         }}</span>
         <span v-else-if="publishedAt">{{
           formatDistanceToNow(publishedAt, {
-            locale: dateFnsLocale,
+            locale: dateFnsLocale?.value,
             addSuffix: true,
           })
         }}</span>
@@ -74,7 +74,7 @@ import RouteName from "@/router/name";
 import { IPost } from "@/types/post.model";
 import LazyImageWrapper from "@/components/Image/LazyImageWrapper.vue";
 import { displayName } from "@/types/actor";
-import { computed, inject } from "vue";
+import { computed, inject, type Ref } from "vue";
 import { formatDateTimeString } from "@/filters/datetime";
 import Tag from "vue-material-design-icons/Tag.vue";
 import AccountEdit from "vue-material-design-icons/AccountEdit.vue";
@@ -94,7 +94,7 @@ const props = withDefaults(
 );
 
 const { t } = useI18n({ useScope: "global" });
-const dateFnsLocale = inject<Locale>("dateFnsLocale");
+const dateFnsLocale = inject<Ref<Locale>>("dateFnsLocale");
 
 const postTags = computed(() => (props.post.tags ?? []).slice(0, 3));
 
