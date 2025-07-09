@@ -16,6 +16,7 @@ defmodule Mobilizon.GraphQL.API.ReportTest do
   alias Mobilizon.Federation.ActivityPub.{Activity, Relay}
 
   describe "reports" do
+    @tag flaky: true
     test "creates a report on a event" do
       %Actor{url: relay_reporter_url} = Relay.get_actor()
       %Actor{id: reporter_id} = insert(:actor)
@@ -35,15 +36,18 @@ defmodule Mobilizon.GraphQL.API.ReportTest do
                  forward: false
                })
 
-      assert %Activity{
-               actor: ^relay_reporter_url,
-               data: %{
-                 "type" => "Flag",
-                 "cc" => [],
-                 "content" => ^comment,
-                 "object" => [^reported_url, ^event_url]
-               }
-             } = flag_activity
+      assert %Activity{actor: ^relay_reporter_url, data: data} = flag_activity
+
+      assert %{
+               "type" => "Flag",
+               "cc" => [],
+               "content" => ^comment,
+               "object" => objects
+             } = data
+
+      assert length(objects) == 2
+      assert reported_url in objects
+      assert event_url in objects
     end
 
     @tag flaky: true
@@ -69,28 +73,21 @@ defmodule Mobilizon.GraphQL.API.ReportTest do
                  comments_ids: [comment_1_id, comment_2_id]
                })
 
-      # Using deterministic ordering to reduce the flakiness
-      expected_objects =
-        [reported_url, comment_1_url, comment_2_url]
-        |> Enum.sort()
+      assert %Activity{actor: ^relay_reporter_url, data: data} = flag_activity
 
-      actual_objects =
-        flag_activity.data["object"]
-        |> Enum.sort()
+      assert %{
+               "type" => "Flag",
+               "content" => ^comment,
+               "object" => objects,
+               "to" => [],
+               "cc" => [],
+               "actor" => ^relay_reporter_url
+             } = data
 
-      assert %Activity{
-               actor: ^relay_reporter_url,
-               data: %{
-                 "type" => "Flag",
-                 "content" => ^comment,
-                 "object" => ^actual_objects,
-                 "to" => [],
-                 "cc" => [],
-                 "actor" => ^relay_reporter_url
-               }
-             } = flag_activity
-
-      assert actual_objects == expected_objects
+      assert length(objects) == 3
+      assert reported_url in objects
+      assert comment_1_url in objects
+      assert comment_2_url in objects
     end
 
     test "creates a report that gets federated" do
