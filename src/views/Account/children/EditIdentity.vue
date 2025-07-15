@@ -283,12 +283,16 @@ const baseIdentity: IPerson = {
 
 const identity = ref<IPerson>(baseIdentity);
 
-watch(person, () => {
-  console.debug("person changed", person.value);
-  if (person.value) {
-    identity.value = { ...person.value };
-  }
-});
+watch(
+  person,
+  () => {
+    console.debug("person changed", person.value);
+    if (person.value) {
+      identity.value = { ...person.value };
+    }
+  },
+  { immediate: true }
+);
 
 const avatarMaxSize = useAvatarMaxSize();
 
@@ -310,23 +314,27 @@ watch(isUpdate, () => {
   resetFields();
 });
 
-watch(identityName, async () => {
-  // Only used when we update the identity
-  if (!isUpdate.value) {
-    identity.value = baseIdentity;
-    return;
-  }
+watch(
+  identityName,
+  async () => {
+    // Only used when we update the identity
+    if (!isUpdate.value) {
+      identity.value = baseIdentity;
+      return;
+    }
 
-  await redirectIfNoIdentitySelected(identityName.value);
+    await redirectIfNoIdentitySelected(identityName.value);
 
-  if (!identityName.value) {
-    router.push({ name: "CreateIdentity" });
-  }
+    if (!identityName.value) {
+      router.push({ name: "CreateIdentity" });
+    }
 
-  if (identityName.value && identity.value) {
-    avatarFile.value = null;
-  }
-});
+    if (identityName.value && identity.value) {
+      avatarFile.value = null;
+    }
+  },
+  { immediate: true }
+);
 
 const submit = (): Promise<void> => {
   if (props.isUpdate) return updateIdentity();
