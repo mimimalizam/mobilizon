@@ -587,6 +587,7 @@
       >
         <div class="map">
           <map-leaflet
+            v-if="showMap"
             :coords="physicalAddress.geom"
             :marker="{
               text: physicalAddress.fullName,
