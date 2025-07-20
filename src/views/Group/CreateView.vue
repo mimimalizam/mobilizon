@@ -18,6 +18,7 @@
           expanded
           v-model="group.name"
           id="group-display-name"
+          :validation-message="t('Please fill out this field')"
         />
       </o-field>
 
