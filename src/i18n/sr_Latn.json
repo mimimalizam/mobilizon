@@ -1688,5 +1688,7 @@
   "Month": "Mesec",
   "Please fill out this field": "Molimo vas da popunite ovo polje",
   "Please enter a valid email address": "Molimo unesite ispravnu e-poštu",
-  "Password must be at least 6 characters long": "Lozinka mora imati najmanje 6 znakova"
+  "Password must be at least 6 characters long": "Lozinka mora imati najmanje 6 znakova",
+  "Please enter a valid URL": "Molimo unesite ispravnu URL adresu",
+  "Please enter a title": "Molimo unesite naslov"
 }
