@@ -29,6 +29,7 @@
             v-model="anonymousParticipation.email"
             :placeholder="$t('Your email')"
             required
+            :validation-message="$t('Please enter a valid email address')"
           />
         </o-field>
         <p v-if="event.joinOptions === EventJoinOptions.RESTRICTED">
@@ -55,6 +56,7 @@
             v-model="anonymousParticipation.message"
             minlength="10"
             :required="event.joinOptions === EventJoinOptions.RESTRICTED"
+            :validation-message="messageValidationText"
           />
         </o-field>
         <o-field>
@@ -178,6 +180,13 @@ const anonymousParticipation = reactive<{
 const formSent = ref(false);
 
 const sendingForm = ref(false);
+
+const messageValidationText = computed(() => {
+  if (event.value?.joinOptions === EventJoinOptions.RESTRICTED) {
+    return t("Please fill out this field");
+  }
+  return t("Please enter at least 10 characters");
+});
 
 const {
   mutate: joinEventMutation,
