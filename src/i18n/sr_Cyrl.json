@@ -1685,5 +1685,7 @@
     "I want to manage the registration on Mobilizon": "Желим да управљам регистрацијом на инстанци",
     "Week": "Недеља",
     "Month": "Месец",
-    "Please fill out this field": "Molimo вас да попуните ово поље"
+    "Please fill out this field": "Молимо вас да попуните ово поље",
+    "Please enter a valid email address": "Молимо унесите исправну е-пошту",
+    "Password must be at least 6 characters long": "Лозинка мора имати најмање 6 знакова"
 }
