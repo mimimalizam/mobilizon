@@ -1690,5 +1690,6 @@
   "Please enter a valid email address": "Molimo unesite ispravnu e-poštu",
   "Password must be at least 6 characters long": "Lozinka mora imati najmanje 6 znakova",
   "Please enter a valid URL": "Molimo unesite ispravnu URL adresu",
-  "Please enter a title": "Molimo unesite naslov"
+  "Please enter a title": "Molimo unesite naslov",
+  "Please enter at least 10 characters": "Molimo unesite najmanje 10 znakova"
 }
