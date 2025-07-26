@@ -39,6 +39,7 @@
           expanded
           v-model="discussion.title"
           id="discussion-title"
+          :validation-message="t('Please enter a title')"
         />
       </o-field>
 

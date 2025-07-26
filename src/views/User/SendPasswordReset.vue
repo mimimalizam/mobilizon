@@ -27,6 +27,7 @@
           type="email"
           v-model="emailValue"
           expanded
+          :validation-message="t('Please enter a valid email address')"
         />
       </o-field>
       <p class="my-4 flex gap-2">

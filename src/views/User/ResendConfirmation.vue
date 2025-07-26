@@ -15,6 +15,7 @@
           id="emailAddress"
           v-model="emailValue"
           expanded
+          :validation-message="$t('Please enter a valid email address')"
         />
       </o-field>
       <p class="flex flex-wrap gap-1 mt-2">

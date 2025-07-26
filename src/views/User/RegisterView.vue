@@ -102,6 +102,7 @@
               type="email"
               v-model="credentials.email"
               expanded
+              :validation-message="t('Please enter a valid email address')"
             />
           </o-field>
 
@@ -120,6 +121,9 @@
               minlength="6"
               v-model="credentials.password"
               expanded
+              :validation-message="
+                t('Password must be at least 6 characters long')
+              "
             />
           </o-field>
 

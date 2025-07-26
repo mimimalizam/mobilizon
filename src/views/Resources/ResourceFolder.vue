@@ -70,8 +70,10 @@
               <o-input
                 ref="resourceRenameInput"
                 aria-required="true"
+                required
                 v-model="updatedResource.title"
                 expanded
+                :validation-message="t('Please enter a title')"
               />
             </o-field>
 
@@ -132,9 +134,11 @@
             <o-input
               ref="modalNewResourceInput"
               aria-required="true"
+              required
               v-model="newResource.title"
               id="new-resource-title"
               expanded
+              :validation-message="t('Please enter a title')"
             />
           </o-field>
 
@@ -173,6 +177,7 @@
                 v-model="newResource.resourceUrl"
                 @blur="previewResource"
                 ref="modalNewResourceLinkInput"
+                :validation-message="t('Please enter a valid URL')"
               />
             </o-field>
 
@@ -188,9 +193,11 @@
             >
               <o-input
                 aria-required="true"
+                required
                 v-model="newResource.title"
                 id="new-resource-link-title"
                 expanded
+                :validation-message="t('Please enter a title')"
               />
             </o-field>
 
