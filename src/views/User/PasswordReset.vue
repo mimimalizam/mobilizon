@@ -20,6 +20,9 @@
           minlength="6"
           v-model="credentials.password"
           expanded
+          :validation-message="
+            $t('Password must be at least 6 characters long')
+          "
         />
       </o-field>
       <o-field :label="$t('Password (confirmation)')">
@@ -31,6 +34,9 @@
           minlength="6"
           v-model="credentials.passwordConfirmation"
           expanded
+          :validation-message="
+            $t('Password must be at least 6 characters long')
+          "
         />
       </o-field>
       <button class="button is-primary">

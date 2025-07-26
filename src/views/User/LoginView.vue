@@ -56,6 +56,7 @@
           id="email"
           type="email"
           v-model="credentials.email"
+          :validation-message="t('Please enter a valid email address')"
         />
       </o-field>
 
@@ -68,6 +69,7 @@
           type="password"
           password-reveal
           v-model="credentials.password"
+          :validation-message="t('Please fill out this field')"
         />
       </o-field>
 
