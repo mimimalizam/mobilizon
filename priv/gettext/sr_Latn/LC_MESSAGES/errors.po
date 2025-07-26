@@ -244,7 +244,7 @@ msgstr "Već jesi član ove grupe"
 #: lib/graphql/resolvers/group.ex:350
 #, elixir-autogen, elixir-format
 msgid "You can't leave this group because you are the only administrator"
-msgstr "Ne možete napustiti ovu grupu jer si jedini administrator"
+msgstr "Ne možete napustiti ovu grupu jer ste jedini administrator"
 
 #: lib/graphql/resolvers/group.ex:308
 #, elixir-autogen, elixir-format
